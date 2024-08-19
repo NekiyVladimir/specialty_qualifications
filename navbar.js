@@ -912,7 +912,7 @@ class Navbar extends HTMLElement {
                 <!--<a href="#" class="navbar-top__link">
                 <img class="img1" src="assets/icons/fixed_icons/login.svg" width="20px"   alt=""> Войти</a>-->
                 <a href="#" class="navbar-top__link">
-                <svg width="32" height="33" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20.5" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg">
                   <path d="M11.9997 3.09912H23.9997C25.4663 3.09912 26.6663 4.29912 26.6663 5.76579V27.0991C26.6663 28.5658 25.4663 29.7658 23.9997 29.7658H11.9997C10.533 29.7658 9.33301 28.5658 9.33301 27.0991V24.4325H11.9997V27.0991H23.9997V5.76579H11.9997V8.43245H9.33301V5.76579C9.33301 4.29912 10.533 3.09912 11.9997 3.09912Z"/>
                   <path d="M13.4533 21.2194L15.3333 23.0994L22 16.4328L15.3333 9.76611L13.4533 11.6461L16.8933 15.0994H4V17.7661H16.8933L13.4533 21.2194Z"/>
                 </svg>
