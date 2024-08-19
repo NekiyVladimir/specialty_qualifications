@@ -86,27 +86,39 @@ class Navbar extends HTMLElement {
                     display: inline-block !important;
                     transform: rotate(180deg);
                 }
+                .navbar-top__link svg {
+                  fill: white;
+                }
+                .navbar-top__link:hover svg {
+                  fill: red;
+                }          
                 .navbar-top-panel{
                     background-color: #414f51;
                     color: white;
                     height: 40px;
-                    padding: 0 20px;
+                    padding: 0 40px;
                     display:flex;
                     justify-content: flex-end;
                     align-items: center;
                     
                     a{
-                        color: white;
-                        text-decoration: none;
-                        cursor: pointer;
-                        display:flex;
-                        align-items: center;
+                      color: white;
+                      font-size: inherit;
+                      text-decoration: none;
+                      cursor: pointer;
+                      display:flex;
+                      align-items: center;
                     }
+                    a:hover {
+                      color: red;
+                      font-family: 'Inter-Bold';
+                    }
+                    
                 }
                 .content_header_section{
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            }
+            }    
             .popap_import_expor_addNew_content_main{
               height:100% ;
             }
@@ -897,7 +909,14 @@ class Navbar extends HTMLElement {
     this.innerHTML = /*html*/ `
         ${STYLE}
             <div class="navbar-top-panel">
-                <a href="#" class="navbar-top__link"><img src="assets/icons/fixed_icons/login.svg" width="20px"   alt=""> Войти</a>
+                <!--<a href="#" class="navbar-top__link">
+                <img class="img1" src="assets/icons/fixed_icons/login.svg" width="20px"   alt=""> Войти</a>-->
+                <a href="#" class="navbar-top__link">
+                <svg width="32" height="33" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.9997 3.09912H23.9997C25.4663 3.09912 26.6663 4.29912 26.6663 5.76579V27.0991C26.6663 28.5658 25.4663 29.7658 23.9997 29.7658H11.9997C10.533 29.7658 9.33301 28.5658 9.33301 27.0991V24.4325H11.9997V27.0991H23.9997V5.76579H11.9997V8.43245H9.33301V5.76579C9.33301 4.29912 10.533 3.09912 11.9997 3.09912Z"/>
+                  <path d="M13.4533 21.2194L15.3333 23.0994L22 16.4328L15.3333 9.76611L13.4533 11.6461L16.8933 15.0994H4V17.7661H16.8933L13.4533 21.2194Z"/>
+                </svg>
+                 Войти</a>
             </div>
             <div class="mobile-control__menu-button">
                 <p>Меню</p>
@@ -975,7 +994,7 @@ class Navbar extends HTMLElement {
                     </div>
                 </div>
             </div>
-            <div class="main_content_box">
+            <!--<div class="main_content_box">
                 <div class="popap_import_expor_addNew" id="popap_import_expor_addNew">
                   <div class='popap_import_expor_addNew_parrent'>
                 <div class="popap_import_expor_addNew_shadow"></div>
@@ -1085,7 +1104,6 @@ class Navbar extends HTMLElement {
                           <p>Регион учебных заведений</p>
                           <div class="select_2" onclick="toggleDropdown(this)">
                             <select name="educational_establishments" class="dropdown-select" id="educational">
-                              <!--<option selected value="Нижегородская область">Нижегородская область</option>-->
                               <option value="Нижний Новгород">Нижний Новгород</option>
                               <option value="Арзамас" >Арзамас</option>
                               <option value="Балахна">Балахна</option>
@@ -1503,7 +1521,7 @@ class Navbar extends HTMLElement {
                         </div>
                       </div>
                 </div>
-            </div>
+            </div>-->
         `;
   }
 
