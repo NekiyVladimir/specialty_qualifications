@@ -98,6 +98,7 @@ class Navbar extends HTMLElement {
                     height: 40px;
                     padding: 0 40px;
                     display:flex;
+                    font-size: 18px;
                     justify-content: flex-end;
                     align-items: center;
                     
@@ -722,7 +723,7 @@ class Navbar extends HTMLElement {
                   display: flex;
                   flex-direction:column;
                   gap:10px;
-                  width: 465px;
+                  width: 33.3%;
                 }
 
                 .main_content{
@@ -812,6 +813,37 @@ class Navbar extends HTMLElement {
                   border: 2px solid #00B0D9;
                   background: none;
                   color:#00B0D9;
+                }
+                
+                .selectBox {
+                  position: relative;
+                }
+
+                .selectBox select {
+                  width: 100%;
+                  font-weight: bold;
+                }
+
+                .overSelect {
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                }
+
+                #checkboxes {
+                  display: none;
+                  border: 1px #dadada solid;
+                }
+
+                #checkboxes label {
+                  display: block;
+                }
+
+                .chekbox_input {
+                  position: absolute;
+                  right: 5px;
                 }
                 
                 .number_of_pagination{
@@ -994,7 +1026,7 @@ class Navbar extends HTMLElement {
                     </div>
                 </div>
             </div>
-            <!--<div class="main_content_box">
+            <div class="main_content_box">
                 <div class="popap_import_expor_addNew" id="popap_import_expor_addNew">
                   <div class='popap_import_expor_addNew_parrent'>
                 <div class="popap_import_expor_addNew_shadow"></div>
@@ -1088,16 +1120,44 @@ class Navbar extends HTMLElement {
                       <div class="main_content_select">
                         <div class="select">
                           <p>Тип учебного заведения</p>
+
                           <div class="select_1" onclick="toggleDropdown(this)">
+                            <div class="dropdown-select selectBox" onclick="showCheckboxes()">
+                              <select>
+                                <option>Тип учебного заведения</option>
+                              </select>
+                              <div class="overSelect"></div>
+                            </div>
+                            <div id="checkboxes">
+                            <label for="one">По всем
+                              <input type="checkbox" id="one" class="chekbox_input" /></label>
+                            <label for="two">Школы, гимназии 
+                              <input type="checkbox" id="two" class="chekbox_input"/></label>
+                            <label for="three">Среднее-специальное учебные заведения
+                              <input type="checkbox" id="three" class="chekbox_input"/></label>
+                            <label for="four">Высшие-специальные учебные заведения
+                              <input type="checkbox" id="four" class="chekbox_input"/></label>  
+                            </div>
+                          </div>
+
+
+
+                          
+
+
+                          <!--<div class="select_1" onclick="toggleDropdown(this)">
+                            <div name="educational_establishments" class="dropdown-select" id="educational" onchange="getValue(this.value);">
+                              <span style="font-size: 13px;">Поиск</span>
+                            </div>
                             <select name="educational_establishments" class="dropdown-select" id="educational" onchange="getValue(this.value);">
-                              <option selected value="">Высшие-специальные учебные заведения</option>
-                              <option value="test2">test2</option>
-                              <option value="tes3">test3</option>
-                              <option value="test4">test4</option>
+                              <option value="По всем">По всем</option>
+                              <option value="Школы, гимназии">Школы, гимназии</option>
+                              <option value="Среднее-специальное учебные заведения">Среднее-специальное учебные заведения</option>
+                              <option value="Высшие-специальные учебные заведения">Высшие-специальные учебные заведения</option>
                             </select>
                             <div class="dropdown-arrow">&#9660;</div>
                             <div class="dropdown-clear" type="button" id="clearBtn" data-index="-1">&#x2715;</div>
-                          </div>
+                          </div>-->
                         </div>
 
                         <div class="select">
@@ -1521,7 +1581,7 @@ class Navbar extends HTMLElement {
                         </div>
                       </div>
                 </div>
-            </div>-->
+            </div>
         `;
   }
 
@@ -1634,6 +1694,20 @@ let arrow=document.querySelectorAll('.dropdown-arrow');
 
 function toggleDropdown(element) {
   element.parentElement.classList.toggle('active');
+}
+
+
+var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
 }
 
 
