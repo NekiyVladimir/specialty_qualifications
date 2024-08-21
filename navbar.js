@@ -775,7 +775,7 @@ class Navbar extends HTMLElement {
               
                 .dropdown-clear {
                   position: absolute;
-                  right: 40px;
+                  right: 15px;
                   top: 49%;
                   transform: translateY(-50%);
                   cursor: pointer;
@@ -784,7 +784,7 @@ class Navbar extends HTMLElement {
                 }
                 .dropdown-arrow {
                   position: absolute;
-                  right: 10px;
+                  right: 50px;
                   top: 13px;
                   /*transform: translateY(-50%);*/
                   transform: rotate(0deg);
@@ -793,6 +793,11 @@ class Navbar extends HTMLElement {
                   color: #999;
                   display:inline-block;
                 }
+
+                .dropdown-arrow.rotated {
+                  transform: rotate(180deg);
+                }
+
                 .select_page{
                   display:flex;
                   gap:15px;
@@ -815,35 +820,65 @@ class Navbar extends HTMLElement {
                   color:#00B0D9;
                 }
                 
-                .selectBox {
-                  position: relative;
+                span {
+                  font-size: 14px;
                 }
 
-                .selectBox select {
-                  width: 100%;
+                .one {
+                  height: 41.6px;
+                }
+                
+                .one-text {
+                  border: none;
+                  resize: none;
+                  height: 0px;
+                  display: flex;
+                  flex-direction: column;
+                  outline: none;
+                }
+                
+                .popup {
+                  display: none;
+                  border: 1px solid #ccc;
+                  padding: 10px;
+                  background-color: #f9f9f9;
+                  position: absolute;
+                  left: 0;
+                }
+
+                .hidden {
+                  display: none;
+                }
+
+                .visible {
+                  display: block;
+                }
+                
+                .selected-item {
+                  display: block;
+                  margin-top: 10px;
                   font-weight: bold;
                 }
 
-                .overSelect {
-                  position: absolute;
-                  left: 0;
-                  right: 0;
-                  top: 0;
-                  bottom: 0;
-                }
-
-                #checkboxes {
-                  display: none;
-                  border: 1px #dadada solid;
-                }
-
-                #checkboxes label {
+                .clear-selection {
                   display: block;
-                }
-
-                .chekbox_input {
+                  cursor: pointer;
+                  width: 21px;
+                  height: 21px;
                   position: absolute;
-                  right: 5px;
+                  right: 10px;
+                  top: 10px;
+                } 
+
+                .one.is-active {
+                  padding-top: 0px;
+                  padding-left: 7px;
+                  span {
+                    font-size: 10px;
+                  }
+                  .one-text {
+                    height: 20px;
+                  } 
                 }
                 
                 .number_of_pagination{
@@ -1120,8 +1155,28 @@ class Navbar extends HTMLElement {
                       <div class="main_content_select">
                         <div class="select">
                           <p>Тип учебного заведения</p>
+                          <div class="select_1">
+                            <div class="dropdown-select one">
+                              <span>Выберите регион</span>
+                              <textarea class="one-text"></textarea>
+                              <span class="selected-item hidden"></span>
+                            </div>
+                            <div class="dropdown-arrow">&#9660;</div>
+                            <div class="clear-selection hidden">&#x2715;</div>
+                            <div class="popup hidden">
+                              <p>Китая</p>
+                              <p>Россия</p>
+                              <p>Беларусь</p>
+                            </div>
+                          
+                          </div>
 
-                          <div class="select_1" onclick="toggleDropdown(this)">
+
+
+
+
+
+                          <!--<div class="select_1" onclick="toggleDropdown(this)">
                             <div class="dropdown-select selectBox" onclick="showCheckboxes()">
                               <select>
                                 <option>Тип учебного заведения</option>
@@ -1138,7 +1193,7 @@ class Navbar extends HTMLElement {
                             <label for="four">Высшие-специальные учебные заведения
                               <input type="checkbox" id="four" class="chekbox_input"/></label>  
                             </div>
-                          </div>
+                          </div>-->
 
 
 
@@ -1695,21 +1750,6 @@ let arrow=document.querySelectorAll('.dropdown-arrow');
 function toggleDropdown(element) {
   element.parentElement.classList.toggle('active');
 }
-
-
-var expanded = false;
-
-function showCheckboxes() {
-  var checkboxes = document.getElementById("checkboxes");
-  if (!expanded) {
-    checkboxes.style.display = "block";
-    expanded = true;
-  } else {
-    checkboxes.style.display = "none";
-    expanded = false;
-  }
-}
-
 
 
 function toggleDatePickerStart() {
