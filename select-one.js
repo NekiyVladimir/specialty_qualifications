@@ -72,5 +72,16 @@ clearSelection.addEventListener('click', function() {
 });
 
 
+function handleClick(event) {
+    const clickedElement = event.currentTarget;
+    const tabName = clickedElement.querySelector('p').textContent;
+    
+ 
+    updateClickedTabName(tabName);
+}
 
+function updateClickedTabName(tabName) {
+    const clickedTabNameElement = document.getElementById('clickedTabName');
+    clickedTabNameElement.textContent = tabName.toUpperCase();
+}
 

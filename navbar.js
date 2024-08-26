@@ -142,7 +142,7 @@ class Navbar extends HTMLElement {
               }
               .date-picker-text{
                   position: absolute;
-                  z-index: 1;
+                  z-index: 0;
                   display: flex;
                   align-items: center;
                   justify-content: center;
@@ -662,6 +662,19 @@ class Navbar extends HTMLElement {
                         background-color: white;
                     }
                 }
+                .mobile-third-panel {
+                  display: none;
+                }    
+                @media(max-width: 640px) {
+                  .mobile-third-panel {
+                    display: block;
+                    margin: 20px 0;
+                  }
+                  .mobile-third-panel span {
+                    font-size: 20px;  
+                  } 
+                }    
+ 
                  @media(width <= 561px) {
                   .content_header_section{
                     grid-template-columns: 1fr;
@@ -988,6 +1001,13 @@ class Navbar extends HTMLElement {
             <div class="mobile-control__menu-button">
                 <p>Меню</p>
                 <span class="icon burger"></span>
+            </div>
+            <div class="mobile-third-panel">
+              <span>&larr;</span>
+              <span>Журнал
+              </span>
+              :
+              <span id="clickedTabName">КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ</span>
             </div>
             <div id="navbar">
                 <div class="panels__panel second-panel ">
@@ -1821,61 +1841,6 @@ function toggleDropdown(element) {
 function getValue(value) {
   alert(value);
 }
-
-//document.addEventListener('DOMContentLoaded', function() {
-//  document.querySelectorAll('.third-panel__tab-text').forEach(item => {
-//      const span = document.createElement('span');
-//      span.style.position = 'absolute';
-//      span.style.visibility = 'hidden';
-//      span.style.whiteSpace = 'nowrap';
-//      span.textContent = item.textContent;
-//
-//      document.body.appendChild(span);
-//
-//      if (span.offsetWidth > item.clientWidth) {
-//          item.setAttribute('title', item.textContent);
-//      } else {
-//          item.removeAttribute('title');
-//      }
-//
-//      document.body.removeChild(span);
-//  });
-//});
-
-//document.addEventListener('DOMContentLoaded', function() {
-  //const menu = document.getElementById('menu');
-//  const toggleButton = document.getElementById('toggleButton');
-//  const items = document.querySelectorAll('.third-panel__tab-text');
-
-  // Initial setup for visible items
-//  checkOverflow(items);
-
-//  toggleButton.addEventListener('click', function() {
-      //items.forEach(item => item.classList.toggle('hidden'));
-//      checkOverflow(items);
-//  });
-
-//  function checkOverflow(items) {
-//      items.forEach(item => {
-//          const span = document.createElement('span');
-//          span.style.position = 'absolute';
-//          span.style.visibility = 'hidden';
-//          span.style.whiteSpace = 'nowrap';
-//          span.textContent = item.textContent;
-//
-//          document.body.appendChild(span);
-//
-//          if (span.offsetWidth > item.clientWidth) {
-//              item.setAttribute('title', item.textContent);
-//          } else {
-//              item.removeAttribute('title');
-//          }
-//
-//          document.body.removeChild(span);
-//      });
-//  }
-//});
-
 
 
 document.addEventListener('DOMContentLoaded', function() {

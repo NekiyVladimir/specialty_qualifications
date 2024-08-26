@@ -37,11 +37,11 @@ class MobileControlMini extends HTMLElement {
     classes
   } = {}) => {
     return /*html*/ `
-            <div class="mobile-control-wrapper__grid-nav ${classes}">
+            <div class="mobile-control-wrapper__grid-nav ${classes}" >
                 <div class="mobile-control-wrapper__icon-wrapper ">
                     <span class="icon too-big-icon">${icon}</span>
                 </div>
-                <div class="mobile-control__tab-name">
+                <div class="mobile-control__tab-name mobile-contol-element" onclick="handleClick(event)">
                     <p>${tabName}</p>
                 </div>
             </div>
