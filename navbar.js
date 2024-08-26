@@ -5,23 +5,23 @@ class Navbar extends HTMLElement {
   }
 
   THRID_PANEL_TABS = [
-    ["объявления", ""],
-    ["вакансии", ""],
-    ["вакансии объединенные", ""],
-    ["соискатели", ""],
-    ["отклики", ""],
-    ["фио", ""],
-    ["Адреса", ""],
-    ["Компании", ""],
-    ["Учебные заведения", ""],
-    ["Сокр.Ю.Ф.", ""],
-    ["Альтернативные", ""],
-    ["Филиалы", ""],
+    ["ОБЬЯВЛЕНИЯ", ""],
+    ["ВАКАНСИИ", ""],
+    ["ВАКАНСИИ ОБЪЕДИНЕННЫЕ", ""],
+    ["СОИСКАТЕЛИ", ""],
+    ["ОТКЛИКИ", ""],
+    ["ФИО", ""],
+    ["АДРЕСА", ""],
+    ["КОМПАНИИ", ""],
+    ["УЧЕБНЫЕ ЗАВЕДЕНИЯ", ""],
+    ["СОКР.Ю.Ф.", ""],
+    ["АЛЬТЕРНАТИВНЫЕ", ""],
+    ["ФИЛИАЛЫ", ""],
     // ["Квалификации", ""],
-    ["Квалификации Специальности", ""],
-    ["Телефонные коды", ""],
-    ["Администраторы", ""],
-    ["email рассылка", ""],
+    ["КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ", ""],
+    ["ТЕЛЕФОННЫЕ КОДЫ", ""],
+    ["АДМИНИСТРАТОРЫ", ""],
+    ["EMAIL РАССЫЛКА", ""],
     ["КАК БЫЛО КАК НАДО", ""],
     ["ПРЕФИКСЫ СЧЕТОВ", ""],
     ["ПОИСК", ""],
@@ -96,7 +96,7 @@ class Navbar extends HTMLElement {
                     background-color: #414f51;
                     color: white;
                     height: 40px;
-                    padding: 0 40px;
+                    padding: 0 45px;
                     display:flex;
                     font-size: 18px;
                     justify-content: flex-end;
@@ -976,14 +976,14 @@ class Navbar extends HTMLElement {
     this.innerHTML = /*html*/ `
         ${STYLE}
             <div class="navbar-top-panel">
-                <!--<a href="#" class="navbar-top__link">
-                <img class="img1" src="assets/icons/fixed_icons/login.svg" width="20px"   alt=""> Войти</a>-->
+              <div>  
                 <a href="#" class="navbar-top__link">
                 <svg width="20" height="20.5" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg">
                   <path d="M11.9997 3.09912H23.9997C25.4663 3.09912 26.6663 4.29912 26.6663 5.76579V27.0991C26.6663 28.5658 25.4663 29.7658 23.9997 29.7658H11.9997C10.533 29.7658 9.33301 28.5658 9.33301 27.0991V24.4325H11.9997V27.0991H23.9997V5.76579H11.9997V8.43245H9.33301V5.76579C9.33301 4.29912 10.533 3.09912 11.9997 3.09912Z"/>
                   <path d="M13.4533 21.2194L15.3333 23.0994L22 16.4328L15.3333 9.76611L13.4533 11.6461L16.8933 15.0994H4V17.7661H16.8933L13.4533 21.2194Z"/>
                 </svg>
                  Войти</a>
+               </div>  
             </div>
             <div class="mobile-control__menu-button">
                 <p>Меню</p>
@@ -1036,7 +1036,7 @@ class Navbar extends HTMLElement {
                       }
                       return markup;
                     })()}
-                    <div class="third-panel__tab more">
+                    <div class="third-panel__tab more" id="toggleButton">
                         <p class="third-panel__tab-text">
                             <span style="width: 100%; text-align: center; position: static;">Все 21</span>
                             <br> журнала <span class="icon reversed" style="padding-left: 5px;"></span></p>
@@ -1645,7 +1645,7 @@ class Navbar extends HTMLElement {
     this.querySelectorAll(".second-panel__tab").forEach((el) => {
       this.querySelectorAll(".third-panel__tab").forEach((el) => {
         el.classList.remove("third-panel__tab_active");
-        if (el.innerHTML.includes("Квалификации Специальности")) {
+        if (el.innerHTML.includes("КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ")) {
           el.classList.add("third-panel__tab_active");
         }
       });
@@ -1654,7 +1654,7 @@ class Navbar extends HTMLElement {
           thirdPanel.setAttribute("style", "display:grid;");
           this.querySelectorAll(".third-panel__tab").forEach((el) => {
             el.classList.remove("third-panel__tab_active");
-            if (el.innerHTML.includes("Квалификации Специальности")) {
+            if (el.innerHTML.includes("КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ")) {
               el.classList.add("third-panel__tab_active");
             }
           });
@@ -1821,6 +1821,99 @@ function toggleDropdown(element) {
 function getValue(value) {
   alert(value);
 }
+
+//document.addEventListener('DOMContentLoaded', function() {
+//  document.querySelectorAll('.third-panel__tab-text').forEach(item => {
+//      const span = document.createElement('span');
+//      span.style.position = 'absolute';
+//      span.style.visibility = 'hidden';
+//      span.style.whiteSpace = 'nowrap';
+//      span.textContent = item.textContent;
+//
+//      document.body.appendChild(span);
+//
+//      if (span.offsetWidth > item.clientWidth) {
+//          item.setAttribute('title', item.textContent);
+//      } else {
+//          item.removeAttribute('title');
+//      }
+//
+//      document.body.removeChild(span);
+//  });
+//});
+
+//document.addEventListener('DOMContentLoaded', function() {
+  //const menu = document.getElementById('menu');
+//  const toggleButton = document.getElementById('toggleButton');
+//  const items = document.querySelectorAll('.third-panel__tab-text');
+
+  // Initial setup for visible items
+//  checkOverflow(items);
+
+//  toggleButton.addEventListener('click', function() {
+      //items.forEach(item => item.classList.toggle('hidden'));
+//      checkOverflow(items);
+//  });
+
+//  function checkOverflow(items) {
+//      items.forEach(item => {
+//          const span = document.createElement('span');
+//          span.style.position = 'absolute';
+//          span.style.visibility = 'hidden';
+//          span.style.whiteSpace = 'nowrap';
+//          span.textContent = item.textContent;
+//
+//          document.body.appendChild(span);
+//
+//          if (span.offsetWidth > item.clientWidth) {
+//              item.setAttribute('title', item.textContent);
+//          } else {
+//              item.removeAttribute('title');
+//          }
+//
+//          document.body.removeChild(span);
+//      });
+//  }
+//});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButton = document.getElementById('toggleButton');
+  const items = document.querySelectorAll('.third-panel__tab-text');
+
+  // Initial setup for visible items
+  checkOverflow(items);
+
+  toggleButton.addEventListener('click', function() {
+      //items.forEach(item => item.classList.toggle('hidden'));
+      checkOverflow(items);
+  });
+
+  function checkOverflow(items) {
+      items.forEach(item => {
+          const clone = document.createElement('div');
+          clone.style.position = 'absolute';
+          clone.style.visibility = 'hidden';
+          clone.style.whiteSpace = 'nowrap';
+          clone.style.font = window.getComputedStyle(item).font;
+          clone.textContent = item.textContent;
+
+          document.body.appendChild(clone);
+
+          if (clone.offsetWidth > item.clientWidth) {
+              item.setAttribute('title', item.textContent);
+          } else {
+              item.removeAttribute('title');
+          }
+
+          document.body.removeChild(clone);
+      });
+  }
+});
+
+
+
 
 
 customElements.define("navbar-elem", Navbar);

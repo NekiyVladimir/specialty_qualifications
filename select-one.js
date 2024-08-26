@@ -70,3 +70,7 @@ clearSelection.addEventListener('click', function() {
     selectedItem.classList.add('hidden');
     clearSelection.classList.add('hidden');
 });
+
+
+
+
