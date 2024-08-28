@@ -1,3 +1,6 @@
+
+
+
 class MobileControlMini extends HTMLElement {
   constructor() {
     super();
@@ -9,39 +12,39 @@ class MobileControlMini extends HTMLElement {
     this.setup();
   }
 
-  THRID_PANEL_TABS = [
-    ["объявления", ""],
-    ["вакансии", ""],
-    ["вакансии объединенные", ""],
-    ["соискатели", ""],
-    ["отклики", ""],
-    ["фио", ""],
-    ["Адреса", ""],
-    ["Компании", ""],
-    ["Учебные заведения", ""],
-    ["Сокр.Ю.Ф.", ""],
-    ["Альтернативные", ""],
-    ["Филиалы", ""],
-    // ["Квалификации", ""],
-    ["Квалификации Специальности", ""],
-    ["ПОИСК", ""],
-    ["Телефонные коды", ""],
-    ["Администраторы", ""],
-    ["email рассылка", ""],
-    ["КАК БЫЛО КАК НАДО", ""],
-    ["ПРЕФИКСЫ СЧЕТОВ", ""],
-    ["БАНКИ", ""],
-    ["РУБРИКАТОР", ""],
-  ];
+  // THRID_PANEL_TABS = [
+  //   ["объявления", ""],
+  //   ["вакансии", ""],
+  //   ["вакансии объед", ""],
+  //   ["соискатели", ""],
+  //   ["отклики", ""],
+  //   ["фио", ""],
+  //   ["Адреса", ""],
+  //   ["Компании", ""],
+  //   ["Учебные заведения", ""],
+  //   ["Сокр.Ю.Ф.", ""],
+  //   ["Альтернативные", ""],
+  //   ["Филиалы", ""],
+  //   // ["Квалификации", ""],
+  //   ["ПОИСК", ""],
+  //   ["Квалификации Специальности", ""],
+  //   ["Телефонные коды", ""],
+  //   ["Администраторы", ""],
+  //   ["email рассылка", ""],
+  //   ["КАК БЫЛО КАК НАДО", ""],
+  //   ["ПРЕФИКСЫ СЧЕТОВ", ""],
+  //   ["БАНКИ", ""],
+  //   ["РУБРИКАТОР", ""],
+  // ];
   TEMPLATE_TAB = (tabName, icon, {
     classes
   } = {}) => {
     return /*html*/ `
-            <div class="mobile-control-wrapper__grid-nav ${classes}" >
+            <div  class="mobile-control-wrapper__grid-nav ${classes} ${tabName.toLowerCase() == page2.toLowerCase() ? 'active_pagee' : ''}">
                 <div class="mobile-control-wrapper__icon-wrapper ">
                     <span class="icon too-big-icon">${icon}</span>
                 </div>
-                <div class="mobile-control__tab-name mobile-contol-element" onclick="handleClick(event)">
+                <div class="mobile-control__tab-name">
                     <p>${tabName}</p>
                 </div>
             </div>
@@ -265,8 +268,7 @@ class MobileControlMini extends HTMLElement {
                     display: none;
                 }
                 .brad-crumbs{
-                    padding-top: 20px;
-                    padding-left: 20px ;
+                    padding: 20px;
                     display:none;  
                 }
                 .brad_crumbs_active{
@@ -274,7 +276,7 @@ class MobileControlMini extends HTMLElement {
                 }
                 .brad-crumb__item__text_container{
                   width: 90%;
-                  text-align: center;
+                  text-align: left;
                 }
                 .brad-crumb__item{
                     display:flex;
@@ -286,6 +288,11 @@ class MobileControlMini extends HTMLElement {
                     border:none
                 }
             </style>`;
+
+
+
+
+
     this.innerHTML = /*html*/ `
             ${STYLE}
             <div class="brad-crumbs">
@@ -306,20 +313,20 @@ class MobileControlMini extends HTMLElement {
                     </div>
                     <div class="mobile-control-wrapper__grid-nav-wrapper">
                         ${(() => {
-                          let markup = ``;
-                          for (const [
-                            index,
-                            tab,
-                          ] of this.THRID_PANEL_TABS.entries()) {
-                            markup += this.TEMPLATE_TAB(tab[0], tab[1], {
-                              classes:
-                                index == this.active
-                                  ? "mobile-control-wrapper__grid-nav_active"
-                                  : "",
-                            });
-                          }
-                          return markup;
-                        })()}
+        let markup = ``;
+        for (const [
+          index,
+          tab,
+        ] of THRID_PANEL_TABS.entries()) {
+          markup += this.TEMPLATE_TAB(tab[0], tab[1], {
+            classes:
+              index == this.active
+                ? "mobile-control-wrapper__grid-nav_active"
+                : "",
+          });
+        }
+        return markup;
+      })()}
                     </div>
                 </div>
 
@@ -380,6 +387,7 @@ class MobileControlMini extends HTMLElement {
   }
 
   openMenu() {
+
     document.querySelectorAll(".mobile-control-wrapper__grid-nav").forEach((el) => {
       el.classList.remove("mobile-control-wrapper__grid-nav_active");
     });
@@ -394,6 +402,8 @@ class MobileControlMini extends HTMLElement {
   }
 
   closeMenu() {
+
+
     const mobileMenu = document.querySelector(".mobile-menu-mini");
     const mobileMenuWrapper = document.querySelector(
       ".mobile-menu-mini-wrapper"
@@ -409,6 +419,7 @@ class MobileControlMini extends HTMLElement {
   }
 
   openSecondRow() {
+
     const secondRow = document.querySelector(
       ".mobile-control-wrapper__row.second"
     );
@@ -416,6 +427,7 @@ class MobileControlMini extends HTMLElement {
   }
 
   closeSecondRow() {
+
     const secondRow = document.querySelector(
       ".mobile-control-wrapper__row.second"
     );
@@ -423,6 +435,7 @@ class MobileControlMini extends HTMLElement {
   }
 
   setup() {
+
     let active = false
     document.querySelectorAll(".mobile-control-wrapper__grid-control-wrapper").forEach(el => {
       el.addEventListener('click', () => {
@@ -458,6 +471,8 @@ class MobileControlMini extends HTMLElement {
 
     bradCrumbsItemButton.addEventListener("click", () => {
       bradCrumbs.classList.remove("brad_crumbs_active");
+
+
       active ? this.openMenu() : bradCrumbsItemTextControl.innerHTML = "";
     });
 
@@ -478,14 +493,24 @@ class MobileControlMini extends HTMLElement {
 
         tabs.forEach((tab) => {
           tab.onclick = () => {
+
+
+
+
+
             tabs.forEach((tab) => {
               tab.classList.remove("mobile-control-wrapper__grid-nav_active");
             });
             tab.classList.add("mobile-control-wrapper__grid-nav_active");
+
+            page2 = findTab(tab.querySelector(".mobile-control__tab-name").innerText)
+            page = tab.querySelector(".mobile-control__tab-name").innerText
             bradCrumbs.classList.add("brad_crumbs_active");
-            bradCrumbsItemTextControl.innerHTML = control.querySelector("p").innerText + " " + tab.querySelector(
+            let pageTitle = findTab(tab.querySelector(
               ".mobile-control__tab-name"
-            ).innerText;
+            ).innerText)
+            bradCrumbsItemTextControl.innerHTML = control.querySelector("p").innerText + ": " + pageTitle.toUpperCase()
+            changeActiveBtn()
             this.closeMenu();
           };
         });
@@ -517,18 +542,80 @@ class MobileControlMini extends HTMLElement {
 customElements.define("mobile-ui", MobileControlMini);
 
 
-window.addEventListener('load', () => {
+
+function getStarted() {
+
   const clientW = window.innerWidth;
   if (640 >= clientW) {
-    const journals = document.getElementById('journals')
-    const mobile_control = document.querySelectorAll('.mobile-control-wrapper__grid-nav')
-    journals.click()
+    console.log(true);
+
+    const journals = document.getElementById('journals');
+    const mobile_control = document.querySelectorAll('.mobile-control-wrapper__grid-nav');
+
+    // Выполнение действий при условии, что ширина экрана меньше или равна 640 пикселей
+    journals.click();
     mobile_control.forEach((item) => {
       const mobile_control__tab = item.querySelector('.mobile-control__tab-name');
       const text = mobile_control__tab.querySelector('p');
-      if (text.innerText == 'КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ') {
-        item.click()
+      if (text.innerText.toLowerCase() === page.toLowerCase()) {
+        item.click();
       }
-    })
+    });
+  } else {
+    const bradCrumbs = document.querySelector(".brad-crumbs");
+    const bradCrumbsItemTextControl = document.querySelector(
+      ".brad-crumb__item__text"
+    );
+    bradCrumbs.classList.remove("brad_crumbs_active");
+    bradCrumbsItemTextControl.innerHTML = "";
+    console.log(false);
+    // Здесь убираем изменения при ширине больше 640 пикселей
+    const journals = document.getElementById('journals');
+    const mobile_control = document.querySelectorAll('.mobile-control-wrapper__grid-nav');
+
+    // Пример: обнуляем активные табы, закрываем все вкладки и т.д.
+    // Предположим, что мы хотим сбросить активный таб
+    mobile_control.forEach((item) => {
+      const mobile_control__tab = item.querySelector('.mobile-control__tab-name');
+      const text = mobile_control__tab.querySelector('p');
+      if (text.innerText.toLowerCase() === page.toLowerCase()) {
+        // Здесь можно добавить логику для сброса состояния
+        // Например, удаление активного состояния, скрытие элемента и т.д.
+        item.classList.remove('active'); // Пример
+      }
+    });
+    // Дополнительно можно добавить код для сброса состояния элемента journals
+    // journals.classList.remove('some-active-class'); // Пример
   }
-})
+}
+
+
+
+window.addEventListener('resize', getStarted)
+window.addEventListener('load', getStarted)
+
+
+function checkPage() {
+  // const searchMenu = document.querySelector('.search-menu')
+
+  // if(page == 'поиск') {
+  //   searchMenu.style.display = 'block'
+  // } else {
+  //   searchMenu.style.display = 'none'
+  // }
+}
+
+function changeActiveBtn() {
+  let els = document.querySelectorAll('.mobile-control-wrapper__grid-nav')
+
+
+  els.forEach(el => {
+
+    el.classList.remove('active_pagee')
+    if (el.querySelector('.mobile-control__tab-name').querySelector('p').innerText.toLowerCase() == page.toLowerCase()) {
+      console.log(el);
+      el.classList.add('active_pagee')
+    }
+  })
+}
+

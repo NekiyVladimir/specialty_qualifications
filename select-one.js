@@ -8,23 +8,34 @@ const listItems = document.querySelectorAll('.popup p');
 const selectedItem = document.querySelector('.selected-item');
 const clearSelection = document.querySelector('.clear-selection');
 const icon = document.querySelector('.dropdown-arrow');
+const dropdown = document.querySelector('.one-text');
 
 element.addEventListener('click', function(event) {
     this.classList.toggle('is-active');
+    if (selectedItem.textContent.trim() === '') {
+        searchArea.classList.toggle('one-text_is-active');
+    }
     icon.classList.toggle('rotated');
     event.stopPropagation(); // Останавливает всплытие события
 });
 
 document.addEventListener('click', function() {
-    element.classList.remove('is-active');
+    if (selectedItem.textContent.trim() === '') {
+        element.classList.remove('is-active');
+        searchArea.classList.remove('one-text_is-active');
+    }
+    //element.classList.remove('is-active');
     icon.classList.remove('rotated');
 });
 
 
-const dropdown = document.querySelector('.one-text');
+
 
 dropdown.addEventListener('click', function(event) {
-    this.classList.toggle('is-active');
+    //this.classList.toggle('is-active');
+    if (selectedItem.textContent.trim() !== '') {
+        this.classList.remove('is-active');
+    }
     event.stopPropagation(); // Останавливает всплытие события
 });
 
@@ -61,12 +72,15 @@ searchArea.addEventListener('input', function() {
 listItems.forEach(item => {
     item.addEventListener('click', function() {
         selectedItem.textContent = `Вы выбрали: ${item.textContent}`;
+        searchArea.classList.remove('one-text_is-active');
+        clearSelection.style.display = 'block';
         selectedItem.classList.remove('hidden');
     });
 });
 
 clearSelection.addEventListener('click', function() {
     selectedItem.textContent = '';
+    clearSelection.style.display = 'none';
     selectedItem.classList.add('hidden');
     clearSelection.classList.add('hidden');
 });
@@ -85,3 +99,13 @@ function updateClickedTabName(tabName) {
     clickedTabNameElement.textContent = tabName.toUpperCase();
 }
 
+function toggleDivVisibility() {
+    if (selectedItem.textContent.trim() !== '') {
+        clearSelection.style.display = 'block'; // Показать div
+    } else {
+        clearSelection.style.display = 'none'; // Скрыть div
+    }
+}
+
+toggleDivVisibility();
+selectedItem.addEventListener('input', toggleDivVisibility);

@@ -1,17 +1,141 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ</title>
     <script src="navbar.js"></script>
     <script src="mobile_control.js"></script>
+
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="media.css">
+    <link rel="stylesheet" href="blocks.css">
+    <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="my.css">
+    <link rel="stylesheet" href="hints.css">
+
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
 </head>
+
 <body>
+   
     <navbar-elem></navbar-elem>
     <mobile-ui></mobile-ui>
+
+
+
+    <div class="container">
+        <h1 class="big-title" id="big-title">Журнал: КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ</h1>
+        <h1 class="big-title-pc" id="big-title-pc">КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ</h1>
+    </div>
     <script src="select-one.js"></script>
+    <!-- Поиск и вывод подсказок -->
+    <!-- <div class="search-menu">
+        <div class="container">
+           
+            <div class="search-menu-scroll-controls">
+                <img src="assets/icons/fixed_icons/scroll-left.svg" alt="Scroll Button" id="scrollLeft">
+                <img src="assets/icons/fixed_icons/scroll-right.svg" alt="Scroll Button" id="scrollRight">
+            </div>
+            <div class="search-container" id="searchContainer">
+                <div class="search-menu-row ">
+                    <div class="third-panel__tab third-panel__tab" id="vacanciesTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">вакансии</p>
+                    </div>
+                    <div class="third-panel__tab" id="applicantsTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">соискатели</p>
+                    </div>
+                    <div class="third-panel__tab" id="fullNameTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">фио</p>
+                    </div>
+                    <div class="third-panel__tab" id="addressesTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">Адреса</p>
+                    </div>
+                    <div class="third-panel__tab" id="companiesTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">Компании</p>
+                    </div>
+                    <div class="third-panel__tab" id="emailTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">email</p>
+                    </div>
+                    <div class="third-panel__tab" id="banksTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">БАНКИ</p>
+                    </div>
+                </div>
+                <div class="search-menu-row">
+                    <div class="third-panel__tab" id="educationalInstitutionsTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text">Учебные<br class="search-block-wrap" /> заведения</p>
+                    </div>
+                    <div class="third-panel__tab" id="legalEntitiesTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">Сокр.Ю.Ф.</p>
+                    </div>
+                    <div class="third-panel__tab" id="alternativeTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">Альтернативные</p>
+                    </div>
+                    <div class="third-panel__tab" id="branchesTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">Филиалы</p>
+                    </div>
+                    <div class="third-panel__tab" id="qualificationsTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">КВАЛИФИКАЦИЯ. СПЕЦИАЛЬНОСТИ
+                        </p>
+                    </div>
+                    <div class="third-panel__tab" id="phoneCodesTab">
+                        <span class="third-panel__tab-icon icon ads-icon in-panel "></span>
+                        <p class="third-panel__tab-text ">Телефонные<br class="search-block-wrap" /> коды</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-forms">
+            <div class="container-small">
+                <div class="tab-button-wrapper" id="tab-button-wrapper" activeValue="1">
+                    <div class="tab-radio-button">
+                        <div class="tab-radio-value tab-radio-value-active" id="radio-val-1">Школа, гимназия</div>
+                        <div class="tab-radio-value" id="radio-val-2">ССУЗ, ВУЗ</div>
+                    </div>
+                </div>
+
+                <div class="search-block-wrapper">
+                    <div class="search-block">
+                        <label for="search-input" class="label-for-search-input" id="label-for-search-input"></label>
+                        <input type="text" class="search-input" id="search-input" autocomplete="off" />
+                    </div>  
+                    <img class="clear-button" id="clear-button" src="assets/icons/clear.svg" alt="Clear">
+                </div>
+
+                <div class="hints" id="hints">
+                    <h3 class="hints-title">Выберите вариант или продолжите ввод</h3>
+                    <div id="hints-container"></div>
+                </div>
+
+                <div class="results-block" id="results-block">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+    <script src="blocks.js"></script> -->
 </body>
+
 </html>

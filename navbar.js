@@ -1,80 +1,63 @@
+
+let page2 = 'Квалификации Специальности'
+let page = 'Квалификации Специальности'
+
+const THRID_PANEL_TABS = [
+  ["Объявления", "", "объявления", "id1"],
+  ["Вакансии", "", "вакансии", "id2"],
+  ["Поиск", "", "поиск", "id3"],
+  ["Соискатели", "", "соискатели", "id4"],
+  ["Отклики", "", "отклики", "id5"],
+  ["ФИО", "", "фио", "id6"],
+  ["Адреса", "", "адреса", "id7"],
+  ["Компании", "", "компании", "id8"],
+  ["Учебные заведения", "", "учебные заведения", "id9"],
+  ["Вакансии объединённые", "", "вакансии объединённые", "id10"],
+  ["Сокращённые юридические формы", "", "сокращенные юридические формы", "id19", true],
+  ["Альтернативные учебные⠀заведения", "", "Альтернативные учебные заведения", "id11"],
+  ["Филиалы учебных заведений", "", "филиалы", "id12"],
+  // ["Квалификации", "", "квалификации"], // Этот элемент закомментирован
+  ["Квалификации Специальности", "", "Квалификации Специальности", "id13"],
+  ["Телефонные коды", "", "телефонные коды", "id14"],
+  ["Администраторы", "", "администраторы", "id15"],
+  ["email рассылка", "", "email рассылка", "id16"],
+  ["Как было как надо", "", "КАК БЫЛО КАК НАДО", "id17"],
+  ["Префиксы счетов", "", "префиксы счетов", "id18"],
+
+  ["Банки", "", "банки", "id20"],
+  ["Рубрикатор", "", "рубрикатор", "id21"],
+];
+
+
 class Navbar extends HTMLElement {
   connectedCallback() {
     this.render();
     this.setup();
   }
 
-  THRID_PANEL_TABS = [
-    ["ОБЬЯВЛЕНИЯ", ""],
-    ["ВАКАНСИИ", ""],
-    ["ВАКАНСИИ ОБЪЕДИНЕННЫЕ", ""],
-    ["СОИСКАТЕЛИ", ""],
-    ["ОТКЛИКИ", ""],
-    ["ФИО", ""],
-    ["АДРЕСА", ""],
-    ["КОМПАНИИ", ""],
-    ["УЧЕБНЫЕ ЗАВЕДЕНИЯ", ""],
-    ["СОКР.Ю.Ф.", ""],
-    ["АЛЬТЕРНАТИВНЫЕ", ""],
-    ["ФИЛИАЛЫ", ""],
-    // ["Квалификации", ""],
-    ["КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ", ""],
-    ["ТЕЛЕФОННЫЕ КОДЫ", ""],
-    ["АДМИНИСТРАТОРЫ", ""],
-    ["EMAIL РАССЫЛКА", ""],
-    ["КАК БЫЛО КАК НАДО", ""],
-    ["ПРЕФИКСЫ СЧЕТОВ", ""],
-    ["ПОИСК", ""],
-    ["БАНКИ", ""],
-    ["РУБРИКАТОР", ""],
-  ];
 
-  NUMBER_OF_PAGINATION = [
-    "<<",
-    "first",
-    "first",
-    ">>",
-  ];
+
+
+
+
 
   THIRD_PANEL_TAB_TEMPLATE = (
     tabName,
-    icon, {
-      classes,
-      id,
-      tabNameClasses
-    } = {
-      classes: "",
-      id: "",
-      tabNameClasses: "",
-    }
+    icon,
+    content,
+    { classes = "", id = "", tabNameClasses = "" } = {}
   ) => {
     return /*html*/ `
-        <div class="third-panel__tab" ${id ? `id=${id.trim()}` : ""}>
-            ${
-              icon
-                ? `<span class="third-panel__tab-icon icon ads-icon in-panel ${classes}">${icon}</span>`
-                : ""
-            }
-            <p class="third-panel__tab-text ${tabNameClasses}" title="${tabName}">${tabName}</p>
-            
+        <div class="third-panel__tab tab${id}" ${id ? `id="${id.trim()}"` : ""}>
+            ${icon
+        ? `<span class="third-panel__tab-icon icon ads-icon in-panel ${classes}">${icon}</span>`
+        : ""
+      }
+            <p class="third-panel__tab-text ${tabNameClasses}">${tabName}</p>
         </div>
     `;
   };
 
-  NUMBER_OF_PAGINATION_TEMPLATE = (tabName, index) => {
-
-    return /*html*/ `
-            ${
-              `<div class="${index == 0 || index == 1?'first_page':'number_of_pagination_div' &&
-              index == this.NUMBER_OF_PAGINATION_TEMPLATE.length+14 ||
-              index == this.NUMBER_OF_PAGINATION_TEMPLATE.length+13
-              ?'next_page':'number_of_pagination_div' && 
-              index == 2?'number_of_pagination_div number_of_pagination_div_active':'number_of_pagination_div'}">
-                ${tabName}
-              </div>`
-            }
-    `;
-  };
 
   render() {
     const STYLE = /*html*/ `
@@ -86,225 +69,23 @@ class Navbar extends HTMLElement {
                     display: inline-block !important;
                     transform: rotate(180deg);
                 }
-                .navbar-top__link svg {
-                  fill: white;
-                }
-                .navbar-top__link:hover svg {
-                  fill: red;
-                }          
                 .navbar-top-panel{
                     background-color: #414f51;
                     color: white;
                     height: 40px;
-                    padding: 0 45px;
+                    padding: 0 20px;
                     display:flex;
-                    font-size: 18px;
                     justify-content: flex-end;
                     align-items: center;
                     
                     a{
-                      color: white;
-                      font-size: inherit;
-                      text-decoration: none;
-                      cursor: pointer;
-                      display:flex;
-                      align-items: center;
+                        color: white;
+                        text-decoration: none;
+                        cursor: pointer;
+                        display:flex;
+                        align-items: center;
                     }
-                    a:hover {
-                      color: red;
-                      font-family: 'Inter-Bold';
-                    }
-                    
                 }
-                .content_header_section{
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            }    
-            .popap_import_expor_addNew_content_main{
-              height:100% ;
-            }
-            .popap_import_expor_addNew_content_footer{
-              padding:32px
-            }
-            .popap_import_expor_addNew_content_footer >button{
-              margin:7px;
-            }
-              .date-picker-container{
-                  position: relative;
-                  border:1px solid #9C9C9C;
-              }
-              .date-picker-container::before{
-                  content:'';
-                  position:absolute;
-                  width: 100%;
-                  height:100%;
-                  background:#fff;
-              }
-              .date-picker-text{
-                  position: absolute;
-                  z-index: 0;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  width: 100%;
-                  height:100%;
-                    cursor:pointer;
-                  color:#9C9C9C;
-              }
-              .date-picker-text img{
-                  margin:0 6px 0 0 ;
-              }
-              .add-new-one{
-                  color:#9C9C9C;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  background:#fff;
-                  cursor:pointer;
-                  border:1px solid #9C9C9C;
-              }
-              .in-total{
-                  color:#9C9C9C;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  background:#fff;
-                  border:1px solid #9C9C9C;
-                  cursor:pointer;
-              }
-              .in-total >span{
-                  color:#4fa95d;
-              }
-              .import_export{
-                  color:#9C9C9C;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  background:#fff;
-                  border:1px solid #9C9C9C;
-                  cursor:pointer;
-              }
-              .popap_import_expor_addNew{
-                  position: fixed;
-                  z-index: 2;
-                  top: 0;
-                  left: 0;
-                  background:#3f3f3f75;
-                  height: 100vh;
-                  width: 100%;
-                  display: none;
-                  justify-content:center;
-                  align-items:center;
-              }
-              .popap_import_expor_addNew_parrent{
-                    max-width: 1200px;
-                      width: 100%;
-                      height: 100%;
-                      display: flex;
-              }
-              td >input{
-                border:none
-              }
-              .popap_import_expor_addNew_content{
-                  background:#fff;
-                  height:100%;
-                  width: 90%;
-                  display: flex;
-                  flex-direction: column;
-              }
-              .popap_import_expor_addNew_cloase{
-                  height:100%;
-                  width: 5%;
-              }
-              .popap_import_expor_addNew_shadow{
-                  background:yellow;
-                  height:100%;
-                  width: 5%;
-              }
-              .popap_import_expor_addNew_shadow{
-                  opacity: 0;
-              }
-              .popap_import_expor_addNew_cloase{
-                  max-width:50px;
-                  padding: 50px 0 0 12px;
-                  width: 100%;
-              }
-              .popap_import_expor_addNew_cloase img{
-                  width: 100%;
-                  cursor: pointer;
-              }
-              .mobile_tabel{
-                display:none;
-              }
-              .popap_import_expor_addNew_content_title{
-                  font-size:30px;
-                  color:#414141;
-                  padding:22px 0 22px 32px;
-                  background-color: #f4f4f4;
-              }
-              .popap_import_expor_addNew_content_footer{
-                  background-color: #f4f4f4;
-                  display: flex;
-                  align-items:center;
-                  justify-content: center;
-              }
-              .popap_import_expor_addNew_content_footer_button_upload{
-                  background: #00B0D9;
-                  color: #fff;
-                  border:none;
-                  outline:none;
-                  padding:14px 80px;
-              }
-              .popap_import_expor_addNew_content_footer_button_cencel {
-                  background: #CACACA;
-                  color: #fff;
-                  border:none;
-                  outline:none;
-                  padding:14px 80px;
-              }
-               .file-input-container {
-                  position: relative;
-                  width: 100%;
-                  max-width: 94%;
-                  margin: 20px 0;
-                  display: none;
-                  align-items: center;
-                  padding: 10px 20px 10px 35px;
-              }
-              .file-input-container > 
-
-              .file-input {
-                  position: relative;
-                  display: flex;
-                  align-items: center;
-                  width: 100%;
-                  border: 1px solid #C1C1C1;
-                  padding: 10px;
-                  box-sizing: border-box;
-              }
-
-              .file-input input[type="file"] {
-                  position: absolute;
-                  opacity: 0;
-                  width: 100%;
-                  height: 100%;
-                  cursor: pointer;
-              }
-
-              .file-input .icon {
-                  margin-right: 10px;
-              }
-
-              .file-input .text {
-                  flex-grow: 1;
-                  color:#898989;
-              }
-
-              .file-input-label {
-                  display: block;
-                  color: #5F5F5F;
-                  margin:10px 25px 0 0;
-              }
                 navbar-elem{
                     width: 100%;
                 }
@@ -327,32 +108,6 @@ class Navbar extends HTMLElement {
                     box-sizing: border-box;
                     font-size: 18px;
                     text-transform: capitalize;
-                }
-                 .file-input-container_2 {
-                    position: relative;
-                    width: 100%;
-                    max-width: 94%;
-                    margin: 0px 0;
-                    display: flex;
-                    align-items: center;
-                    padding: 0 20px 10px 35px;
-                }
-                .file-input-container_2 > .file-input_2 {
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    border: 1px solid #C1C1C1;
-                    padding: 10px;
-                    box-sizing: border-box;
-                }
-                
-                .file-input-label_2 {
-                    display: block;
-                    color: #5F5F5F;
-                    margin:10px 25px 0 0;
-                    max-width:150px;
-                    width:100%;
                 }
                 .second-panel__tab > p {
                     font-size: inherit;
@@ -380,59 +135,9 @@ class Navbar extends HTMLElement {
                     align-items: start;
                 }
                 
-                .custom-select-container {
-                    position: relative;
-                    width: 200px; /* Adjust as needed */
-                    margin: 20px 0;
-                }
-
-                .custom-select {
-                    width: 100%;
-                    padding: 10px;
-                    border: 1px solid #C1C1C1;
-                    appearance: none;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    background: none;
-                    font-size: 16px;
-                    color:#7D7D7D;
-                }
-
-                .custom-select:focus {
-                    outline: none;
-                }
-
-                .custom-select-container::after {
-                    content:url('./assets/icons/fixed_icons/55444 6.svg');
-                    position: absolute;
-                    right: 50px;
-                    top: 55%;
-                    transform: translateY(-50%);
-                    pointer-events: none;
-                }
-
-                .clear-icon {
-                    position: absolute;
-                    right: 10px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    cursor: pointer;
-                    display: none; /* Hidden by default */
-                }
-
-                .clear-icon.visible {
-                    display: inline;
-                }
-
-                .select_op{
-                    display: flex;
-                    align-items: center;
-                    padding: 0 20px 10px 35px;
-                }
-                
                 .third-panel__tab {
-                    padding-left: 4px;
-                    padding-right: 4px;
+                    padding-left: 15px;
+                    padding-right: 15px;
                     box-sizing: border-box;
                     font-weight: 100;
                     color: white;
@@ -466,7 +171,7 @@ class Navbar extends HTMLElement {
                     width: 100%;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    white-space: nowrap;
+                    white-space: wrap;
                 }
                 .panels {
                     width: 100%;
@@ -489,91 +194,7 @@ class Navbar extends HTMLElement {
                 .third-panel__tab.more > p.third-panel__tab-text > span{
                     position: absolute;
                 }
-                .add-new-one-content-2{
-                  margin-top:14px;
-                  display:none;
-                }
                 @media (width <= 880px) {
-                  .main_content_pagination{
-                    display:none !important;
-                  }
-                  .cvalication_item > div{
-                    border:1px solid #ccc;
-                    margin:20px 0;
-                    display:flex;
-                    align-items:center;
-                    padding:8px;
-                  }
-                  .main_content_box{
-                        padding: 0px 30px 30px 30px !important; 
-                  }
-                  .min_tabel{
-                    border-top:4px solid #00B0D9;
-                    padding:12px;
-                    display:flex;
-                    margin-top:20px;
-                  }
-                  .min_tabel_left{
-                    border-right:0.5px solid #808080;
-                  }
-                  .min_tabel_right{
-                    width:100%;
-                  }
-                  .min_tabel_right_first{
-                      display: flex;
-                      justify-content: space-between;
-                  }
-                  .min_tabel_right >div{
-                    display:flex;
-                    align-items:center;
-                    color: #808080;
-                    font-size: 15px;
-                    padding: 8px 0 8px 2px;
-                    border-top: 1px solid #808080
-                  }
-                  .min_tabel_right_first{
-                    padding: 5px 0 5px 2px !important;
-                  } 
-                  .min_tabel_left >div{
-                    color: #808080;
-                    font-size:15px;
-                    padding:8px 12px 8px 2px;
-                    border-top:1px solid #808080;
-                  }
-                  .min_tabel_right_first >div >img{
-                    width:20.5px;
-                    margin-right:40px;
-                  }
-                  .min_tabel_left > div:last-child {
-                    border-bottom:1px solid #808080;
-                  }
-                  .min_tabel_right > div:last-child {
-                    border-bottom:1px solid #808080;
-                  }
-                    .cvalication_item > div input{
-                      border:none;
-                      outline:none;
-                      padding:0 0 0 5px;
-                    }
-                  .qualification-journal{
-                    display: none !important;
-                  }
-                  .content_header_section{
-                    grid-template-columns: 1fr 1fr;
-                  }
-                  .element {
-                    height: 50px;
-                  }  
-                  .mobile_tabel{
-                    display:block;
-                  }
-                  .main_content_select{
-                    gap:25px !important;
-                    flex-direction:column;
-                  }
-                  .select{
-                    width:100% !important;
-                  }
                     p.third-panel__tab-text{
                         font-size: 18px;
                     }
@@ -662,47 +283,6 @@ class Navbar extends HTMLElement {
                         background-color: white;
                     }
                 }
-                .mobile-third-panel {
-                  display: none;
-                }    
-                @media(max-width: 640px) {
-                  .mobile-third-panel {
-                    display: block;
-                    margin: 20px 0;
-                  }
-                  .mobile-third-panel span {
-                    font-size: 20px;  
-                  } 
-                }    
- 
-                 @media(width <= 561px) {
-                  .content_header_section{
-                    grid-template-columns: 1fr;
-                  }
-                  .content_header_section >div{
-                    height:50px;
-                  }
-
-                  .mobile_tabel h3{
-                    display:none;
-                  }
-                  .main_content {
-                      display: flex;
-                      flex-direction: column;
-                      gap: 30px;
-                  }  
-                   .min_tabel_right_first {
-                     padding: 11px 0 5px 2px !important;
-                   }
-                   .min_tabel_right > div {
-                       height: 51px  !important;
-                     }
-                     .min_tabel_left > div {
-                       height: 51px  !important;
-                     }
-                     
-
-                 }
                 @media (width <= 1560px) {
                     .third-panel__tab {
                         flex: 1;
@@ -722,24 +302,10 @@ class Navbar extends HTMLElement {
                         font-size: 16px;
                     }
                 }
-                .main_content_box{
-                  padding:35px 40px;
-                }
-                .top{
-                  background-color:red;
-                  width:100%;
-                  height:50px;
-                }
-                
-                .select {
-                  position: relative;
-                  display: flex;
-                  flex-direction:column;
-                  gap:10px;
-                  width: 33.3%;
-                }
 
-                .main_content{
+	        /* main_content*/
+
+		.main_content{
                   margin-top:20px;
                   display:flex;
                   flex-direction:column;
@@ -749,18 +315,311 @@ class Navbar extends HTMLElement {
                 .main_content p{
                   color:#414141;
                 }
+		.main_content_box{
+                  padding:35px 40px;
+                }
+		.popap_import_expor_addNew{
+                  position: fixed;
+                  z-index: 2;
+                  top: 0;
+                  left: 0;
+                  background:#3f3f3f75;
+                  height: 100vh;
+                  width: 100%;
+                  display: none;
+                  justify-content:center;
+                  align-items:center;
+              	}
+		.popap_import_expor_addNew_content_main {
+    		  height: 100%;
+		}
+              	.popap_import_expor_addNew_parrent{
+                  max-width: 1200px;
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+              	}
+              	td >input{
+                  border:none
+              	}
+              	.popap_import_expor_addNew_content{
+                  background:#fff;
+                  height:100%;
+                  width: 90%;
+                  display: flex;
+                  flex-direction: column;
+              	}
+              	.popap_import_expor_addNew_cloase{
+                  height:100%;
+                  width: 5%;
+              	}
+              	.popap_import_expor_addNew_shadow{
+                  background:yellow;
+                  height:100%;
+                  width: 5%;
+              	}
+              	.popap_import_expor_addNew_shadow{
+                  opacity: 0;
+              	}
+              	.popap_import_expor_addNew_cloase{
+                  max-width:50px;
+                  padding: 50px 0 0 12px;
+                  width: 100%;
+              	}
+              	.popap_import_expor_addNew_cloase img{
+                  width: 100%;
+                  cursor: pointer;
+              	}
+              	.mobile_tabel{
+                  display:none;
+              	}
+              	.popap_import_expor_addNew_content_title{
+                  font-size:30px;
+                  color:#414141;
+                  padding:22px 0 22px 32px;
+                  background-color: #f4f4f4;
+              	}
+              	.popap_import_expor_addNew_content_footer{
+                  background-color: #f4f4f4;
+                  display: flex;
+                  align-items:center;
+                  justify-content: center;
+              	}
+		.popap_import_expor_addNew_content_footer {
+    		  padding: 32px;
+		}
+		.popap_import_expor_addNew_content_footer >button {
+    		  margin: 7px;
+		}
+              	.popap_import_expor_addNew_content_footer_button_upload{
+                  background: #00B0D9;
+                  color: #fff;
+                  border:none;
+                  outline:none;
+                  padding:14px 80px;
+              	}
+              	.popap_import_expor_addNew_content_footer_button_cencel {
+                  background: #CACACA;
+                  color: #fff;
+                  border:none;
+                  outline:none;
+                  padding:14px 80px;
+              	}
+		.file-input-container {
+                  position: relative;
+                  width: 100%;
+                  max-width: 94%;
+                  margin: 20px 0;
+                  display: none;
+                  align-items: center;
+                  padding: 10px 20px 10px 35px;
+              	}
+              	.file-input-container > 
 
-                .main_content_select{
-                  display:flex;
-                  /*gap:60px;*/
+              	.file-input {
+                  position: relative;
+                  display: flex;
+                  align-items: center;
+                  width: 100%;
+                  border: 1px solid #C1C1C1;
+                  padding: 10px;
+                  box-sizing: border-box;
+              	}
+		.file-input-container_2 {
+    		  position: relative;
+    		  width: 100%;
+    		  max-width: 94%;
+    		  margin: 0px 0;
+    		  display: flex;
+    		  align-items: center;
+    		  padding: 0 20px 10px 35px;
+		}
+		.file-input-label_2 {
+    		  display: block;
+    		  color: #5F5F5F;
+    		  margin: 10px 25px 0 0;
+    		  max-width: 150px;
+    		  width: 100%;
+		}
+		.file-input-container_2 > .file-input_2 {
+    		  position: relative;
+    		  display: flex;
+    		  align-items: center;
+    		  width: 100%;
+    		  border: 1px solid #C1C1C1;
+    		  padding: 10px;
+    		  box-sizing: border-box;
+		}
+
+              	.file-input input[type="file"] {
+                  position: absolute;
+                  opacity: 0;
+                  width: 100%;
+                  height: 100%;
+                  cursor: pointer;
+              	}
+
+              	.file-input .icon {
+                  margin-right: 10px;
+              	}
+
+              	.file-input .text {
+                  flex-grow: 1;
+                  color:#898989;
+              	}
+
+              	.file-input-label {
+                  display: block;
+                  color: #5F5F5F;
+                  margin:10px 25px 0 0;
+              	}
+		.select_op{
+                    display: flex;
+                    align-items: center;
+                    padding: 0 20px 10px 35px;
+                }
+		.custom-select-container {
+                    position: relative;
+                    width: 200px; /* Adjust as needed */
+                    margin: 20px 0;
                 }
 
-                .select_1, .select_2{
+                .custom-select {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #C1C1C1;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    background: none;
+                    font-size: 16px;
+                    color:#7D7D7D;
+                }
+
+                .custom-select:focus {
+                    outline: none;
+                }
+
+                .custom-select-container::after {
+                    content:url('./assets/icons/fixed_icons/55444 6.svg');
+                    position: absolute;
+                    right: 50px;
+                    top: 55%;
+                    transform: translateY(-50%);
+                    pointer-events: none;
+                }
+		.clear-icon {
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    display: none; /* Hidden by default */
+                }
+
+                .clear-icon.visible {
+                    display: inline;
+                }
+		.content_header_section{
+                  display: grid;
+                  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            	}
+		.date-picker-container{
+                  position: relative;
+                  border:1px solid #9C9C9C;
+              	}
+              	.date-picker-container::before{
+                  content:'';
+                  position:absolute;
+                  width: 100%;
+                  height:100%;
+                  background:#fff;
+              	}
+              	.date-picker-text{
+                  position: absolute;
+                  z-index: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 100%;
+                  height:100%;
+                    cursor:pointer;
+                  color:#9C9C9C;
+              	}
+              	.date-picker-text img{
+                  margin:0 6px 0 0 ;
+              	}
+		.add-new-one{
+                  color:#9C9C9C;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background:#fff;
+                  cursor:pointer;
+                  border:1px solid #9C9C9C;
+              	}
+		.add-new-one-content-2{
+                  margin-top:14px;
+                  display:none;
+                }
+		.in-total{
+                  color:#9C9C9C;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background:#fff;
+                  border:1px solid #9C9C9C;
+                  cursor:pointer;
+              	}
+              	.in-total >span{
+                  color:#4fa95d;
+              	}
+		.import_export{
+                  color:#9C9C9C;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background:#fff;
+                  border:1px solid #9C9C9C;
+                  cursor:pointer;
+              	}
+		.main_content_select{
+                  display:flex;
+                }
+		.select {
+                  position: relative;
+                  display: flex;
+                  flex-direction:column;
+                  gap:10px;
+                  width: 33.3%;
+                }
+		.select_1, .select_2{
                   position: relative;
                 }
 
                 .select.active .dropdown-arrow {
                   transform: rotate(180deg);
+                }
+		.select_page{
+                  display:flex;
+                  gap:15px;
+                  align-items:center;
+                  cursor:pointer;
+                }
+                .select_page p{
+                  font-size:14px
+                }
+                .select_page input{
+                  width:60px;
+                  height:40px;
+                  border: 2px solid #ccc;
+                }
+                .select_page button{
+                  width:60px;
+                  height:40px;
+                  border: 2px solid #00B0D9;
+                  background: none;
+                  color:#00B0D9;
                 }
             
                 .dropdown-select {
@@ -794,11 +653,16 @@ class Navbar extends HTMLElement {
                   cursor: pointer;
                   font-size: 14px;
                   color: #999;
+                  svg {
+                    fill: #C3C3C3;
+                  }
                 }
                 .dropdown-arrow {
                   position: absolute;
                   right: 50px;
                   top: 13px;
+                  height: 18px;
+                  width: 18px;
                   /*transform: translateY(-50%);*/
                   transform: rotate(0deg);
                   pointer-events: none;
@@ -810,30 +674,7 @@ class Navbar extends HTMLElement {
                 .dropdown-arrow.rotated {
                   transform: rotate(180deg);
                 }
-
-                .select_page{
-                  display:flex;
-                  gap:15px;
-                  align-items:center;
-                  cursor:pointer;
-                }
-                .select_page p{
-                  font-size:14px
-                }
-                .select_page input{
-                  width:60px;
-                  height:40px;
-                  border: 2px solid #ccc;
-                }
-                .select_page button{
-                  width:60px;
-                  height:40px;
-                  border: 2px solid #00B0D9;
-                  background: none;
-                  color:#00B0D9;
-                }
-                
-                span {
+		.one-placeholder {
                   font-size: 14px;
                 }
 
@@ -865,12 +706,18 @@ class Navbar extends HTMLElement {
 
                 .visible {
                   display: block;
+                  z-index: 1;
                 }
                 
                 .selected-item {
                   display: block;
-                  margin-top: 10px;
-                  font-weight: bold;
+                }
+
+                .icon {
+                  /*display: block;*/
+                  font-family: "Icon";
+                  width: fit-content;
+                  height: fit-content;
                 }
 
                 .clear-selection {
@@ -881,134 +728,181 @@ class Navbar extends HTMLElement {
                   position: absolute;
                   right: 10px;
                   top: 10px;
+                  svg {
+                    fill: #C3C3C3;
+                  }
                 } 
+
+                .clear-selection:hover svg {
+                  fill: black;
+                }
 
                 .one.is-active {
                   padding-top: 0px;
                   padding-left: 7px;
-                  span {
+                  .one-placeholder {
                     font-size: 10px;
-                  }
-                  .one-text {
-                    height: 20px;
                   } 
                 }
-                
-                .number_of_pagination{
-                  display:flex;
-                  gap:10px;
+
+                .one-text_is-active {
+                  height: 20px;
                 }
-                
-                .number_of_pagination_div{
-                  border:1px solid #00B0D9;
-                  width:40px;
-                  height:40px;
-                  display:flex;
-                  justify-content:center;
-                  align-items:center;
-                  font-size:14px;
-                  cursor:pointer;
-                }
-                .number_of_pagination_div_active{
-                  background-color:#00B0D9;
-                  color:yellow;
-                }
-                .first_page{
-                  color:#D7D7D7;
-                  border:unset;
-                  border:1px solid #D7D7D7;
-                  width:40px;
-                  height:40px;
-                  display:flex;
-                  justify-content:center;
-                  align-items:center;
-                  font-size:14px;
-                  cursor:pointer;
-                }
-                .next_page{
-                  color:#00B0D9;
-                  border:unset;
-                  border:1px solid #00B0D9;
-                  width:40px;
-                  height:40px;
-                  display:flex;
-                  justify-content:center;
-                  align-items:center;
-                  font-size:14px;
-                  cursor:pointer;
-                }
-                .main_content_pagination{
+		.main_content_pagination{
                   display:flex;
                   justify-content:space-between
                 }
-                table.qualification-journal {
-                  width: 100%;
-                  border-collapse: collapse;
-                  margin-top: 20px;
-              }
-              
-              table.qualification-journal caption {
-                  font-size: 1.5em;
-                  margin-bottom: 10px;
-                  font-weight: bold;
-              }
-              table.qualification-journal td {
-                  border: 1px solid #ddd;
-                  padding: 8px;
-                  text-align: left;
-              }
-              
-              table.qualification-journal th {
-                  color:#9C9C9C;
-                  font-weight: 100;
-                  border: 1px solid #ddd;
-                  padding: 8px;
-                  text-align: center;
-                  font-size:14px;
-              }
-              
-              table.qualification-journal td a {
-                  text-decoration: none;
-              }
-              table.qualification-journal caption {
-                  margin-bottom:50px;
-                  text-align: start;
-              }
-              
-              table.qualification-journal td .icon {
-                  width: 20px;
-                  height: 20px;
-                  margin-right: 5px;
-              } 
-              .edit_td >a:nth-child(1){
-                margin-right:20px;
-                margin-left:20px;
-              }
+		table.qualification-journal {
+    		  width: 100%;
+    		  border-collapse: collapse;
+    		  margin-top: 20px;
+		}
+		table.qualification-journal caption {
+    		  font-size: 1.5em;
+    		  margin-bottom: 10px;
+    		  font-weight: bold;
+    		  text-align: start;
+		}
+		table.qualification-journal th {
+    		  color: #9C9C9C;
+    		  font-weight: 100;
+    		  border: 1px solid #ddd;
+    		  padding: 8px;
+    		  text-align: center;
+    		  font-size: 14px;
+		}
+		table.qualification-journal td {
+    		  border: 1px solid #ddd;
+    		  padding: 8px;
+    		  text-align: left;
+		}
+		.edit_td >a:nth-child(1) {
+    		  margin-right: 20px;
+    		  margin-left: 20px;
+		}
+		table.qualification-journal td a {
+    		  text-decoration: none;
+		}
+		table.qualification-journal td .icon {
+    		  width: 20px;
+    		  height: 20px;
+    		  margin-right: 5px;
+		}  
+		@media (width <= 880px) {
+                  .main_content_box{
+                        padding: 0px 30px 30px 30px !important; 
+                  }
+		  .content_header_section{
+                    grid-template-columns: 1fr 1fr;
+                  }
+		  .main_content_select{
+                    gap:25px !important;
+                    flex-direction:column;
+                  }
+                  .select{
+                    width:100% !important;
+                  }
+		  .main_content_pagination{
+                    display:none !important;
+                  }
+		  .element {
+                    height: 50px;
+                  }
+		  .mobile_tabel {
+        	    display: block;
+    		  }
+		  .cvalication_item > div {
+        	    border: 1px solid #ccc;
+        	    margin: 20px 0;
+        	    display: flex;
+        	    align-items: center;
+        	    padding: 8px;
+    		  }
+		  .cvalication_item > div input {
+        	    border: none;
+         	    outline: none;
+        	    padding: 0 0 0 5px;
+    		  }
+		  .min_tabel {
+        	    border-top: 4px solid #00B0D9;
+        	    padding: 12px;
+        	    display: flex;
+        	    margin-top: 20px;
+    	    	  }
+		  .min_tabel_left {
+        	    border-right: 0.5px solid #808080;
+    		  }
+		  .min_tabel_left >div {
+        	    color: #808080;
+        	    font-size: 15px;
+        	    padding: 8px 12px 8px 2px;
+        	    border-top: 1px solid #808080;
+    		  }
+		  .min_tabel_left > div:last-child {
+        	    border-bottom: 1px solid #808080;
+    		  }
+		  .min_tabel_right {
+        	    width: 100%;
+    		  }
+		  .min_tabel_right >div {
+        	    display: flex;
+        	    align-items: center;
+        	    color: #808080;
+        	    font-size: 15px;
+        	    padding: 8px 0 8px 2px;
+        	    border-top: 1px solid #808080;
+    		  }
+		  .min_tabel_right_first {
+        	    padding: 5px 0 5px 2px !important;
+		    display: flex;
+        	    justify-content: space-between;
+    		  }
+		  .min_tabel_right_first >div >img {
+        	    width: 20.5px;
+        	    margin-right: 40px;
+    		  }
+		  .min_tabel_right > div:last-child {
+        	    border-bottom: 1px solid #808080;
+    		  }
+		  .qualification-journal {
+        	    display: none !important;
+    		  }
+		}
+		@media(width <= 561px) {
+                  .content_header_section{
+                    grid-template-columns: 1fr;
+                  }
+                  .content_header_section >div{
+                    height:50px;
+                  }
+		}
             </style>
         `;
     this.innerHTML = /*html*/ `
         ${STYLE}
             <div class="navbar-top-panel">
-              <div>  
-                <a href="#" class="navbar-top__link">
-                <svg width="20" height="20.5" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.9997 3.09912H23.9997C25.4663 3.09912 26.6663 4.29912 26.6663 5.76579V27.0991C26.6663 28.5658 25.4663 29.7658 23.9997 29.7658H11.9997C10.533 29.7658 9.33301 28.5658 9.33301 27.0991V24.4325H11.9997V27.0991H23.9997V5.76579H11.9997V8.43245H9.33301V5.76579C9.33301 4.29912 10.533 3.09912 11.9997 3.09912Z"/>
-                  <path d="M13.4533 21.2194L15.3333 23.0994L22 16.4328L15.3333 9.76611L13.4533 11.6461L16.8933 15.0994H4V17.7661H16.8933L13.4533 21.2194Z"/>
-                </svg>
-                 Войти</a>
-               </div>  
+                <a href="#" class="navbar-top__link"><svg width="20" height="33" viewBox="0 0 32 33" class="svg-red" fill="red" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9997 3.09912H23.9997C25.4663 3.09912 26.6663 4.29912 26.6663 5.76579V27.0991C26.6663 28.5658 25.4663 29.7658 23.9997 29.7658H11.9997C10.533 29.7658 9.33301 28.5658 9.33301 27.0991V24.4325H11.9997V27.0991H23.9997V5.76579H11.9997V8.43245H9.33301V5.76579C9.33301 4.29912 10.533 3.09912 11.9997 3.09912Z" fill="white"/>
+<path d="M13.4533 21.2194L15.3333 23.0994L22 16.4328L15.3333 9.76611L13.4533 11.6461L16.8933 15.0994H4V17.7661H16.8933L13.4533 21.2194Z" fill="white"/>
+</svg>
+ Войти</a>
             </div>
             <div class="mobile-control__menu-button">
                 <p>Меню</p>
                 <span class="icon burger"></span>
             </div>
-            <div class="mobile-third-panel">
-              <span>&larr;</span>
-              <span>Журнал
-              </span>
-              :
-              <span id="clickedTabName">КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ</span>
-            </div>
+		
+	    <div class="brad-crumbs">
+                <div class="brad-crumb__item">
+                    <button class="brad-crumb__item__button">
+                        <img src="assets/icons/fixed_icons/go-back.svg" width="23" alt="">
+                    </button>
+                </div>
+                <div class= "brad-crumb__item__text_container">
+                  <span class="brad-crumb__item__text"></span>
+                </div>
+            </div>	
+	    
             <div id="navbar">
                 <div class="panels__panel second-panel ">
                     <div class="tab second-panel__tab" id="interface_tab">
@@ -1042,46 +936,98 @@ class Navbar extends HTMLElement {
                 </div>
                 <div class="third-panel journals panels__panel">
                     ${(() => {
-                      let markup = "";
-                      for (const tab of this.THRID_PANEL_TABS.slice(0, 8)) {
-                        if (tab[0] == "вакансии объед") {
-                          markup += this.THIRD_PANEL_TAB_TEMPLATE(
-                            tab[0],
-                            tab[1],
-                            { tabNameClasses: "no-white" }
-                          );
-                          continue;
-                        }
-                        markup += this.THIRD_PANEL_TAB_TEMPLATE(tab[0], tab[1]);
-                      }
-                      return markup;
-                    })()}
-                    <div class="third-panel__tab more" id="toggleButton">
+        let markup = "";
+        for (let index = 0; index < THRID_PANEL_TABS.slice(0, 8).length; index++) {
+          const [tabName, icon, content, id] = THRID_PANEL_TABS[index];
+          if (!tabName || !icon) continue; // Проверяем, что данные существуют
+
+          markup += this.THIRD_PANEL_TAB_TEMPLATE(
+            tabName,
+            icon,
+            content,
+            { id, tabNameClasses: tabName === "вакансии объед" ? "no-white" : "" }
+          );
+
+          setTimeout(() => {
+            // console.log(document.querySelector(`.tab${id}`).lastElementChild.offsetWidth);
+            // console.log(document.querySelector(`.tab${id}`).lastElementChild.scrollWidth);
+            if (document.querySelector(`.tab${id}`).lastElementChild.offsetWidth < document.querySelector(`.tab${id}`).lastElementChild.scrollWidth) {
+              console.log(true);
+
+
+              // tippy(`.tab${id}`, {
+              //   content: content,
+              //   placement: 'bottom',
+              //   arrow: false,
+              //   theme: 'customTip',
+              //   maxWidth: 'none'
+              // });
+            } else {
+              console.log(false);
+            }
+          }, 500);
+
+        }
+
+
+        return markup;
+      })()}
+                    <div class="third-panel__tab more">
                         <p class="third-panel__tab-text">
                             <span style="width: 100%; text-align: center; position: static;">Все 21</span>
                             <br> журнала <span class="icon reversed" style="padding-left: 5px;"></span></p>
                     </div>
                     <div class="other-tabs">
                         ${(() => {
-                          let markup = "";
-                          for (const [
-                            index,
-                            tab,
-                          ] of this.THRID_PANEL_TABS.slice(8).entries()) {
-                            if (index == 8) {
-                              markup += `<div class="third-panel__tab more"></div>`;
-                            }
-                            markup += this.THIRD_PANEL_TAB_TEMPLATE(
-                              tab[0],
-                              tab[1]
-                            );
-                          }
-                          return markup;
-                        })()}
+        let markup = "";
+        for (const [
+          index,
+          tab,
+        ] of THRID_PANEL_TABS.slice(8).entries()) {
+          if (index == 8) {
+            markup += `<div class="third-panel__tab more"></div>`;
+          }
+          const [tabName, icon, content, id] = THRID_PANEL_TABS[index + 8];
+          markup += this.THIRD_PANEL_TAB_TEMPLATE(
+            tabName,
+            icon,
+            content,
+            { id, tabNameClasses: tabName === "вакансии объед" ? "no-white" : "" }
+          );
+
+          // setTimeout(() => {
+          //   // console.log(document.querySelector(`.tab${id}`).lastElementChild);
+          //   // console.log(document.querySelector(`.tab${id}`).lastElementChild);
+
+          //   if (document.querySelector(`.tab${id}`).lastElementChild.offsetWidth < document.querySelector(`.tab${id}`).lastElementChild.scrollWidth) {
+          //     tippy(`.tab${id}`, {
+          //       content: content,
+          //       placement: 'bottom',
+          //       arrow: false,
+          //       theme: 'customTip',
+          //       maxWidth: 'none'
+          //     });
+          //   }
+          // }, 500);
+
+        }
+        return markup;
+      })()}
                     </div>
                 </div>
+
+
+         
+  
+
             </div>
-            <div class="main_content_box">
+		
+	    
+
+
+
+
+	    <div class="main_content_box">
                 <div class="popap_import_expor_addNew" id="popap_import_expor_addNew">
                   <div class='popap_import_expor_addNew_parrent'>
                 <div class="popap_import_expor_addNew_shadow"></div>
@@ -1175,28 +1121,30 @@ class Navbar extends HTMLElement {
                       <div class="main_content_select">
                         <div class="select">
                           <p>Тип учебного заведения</p>
-                          <div class="select_1">
+                          <!--<div class="select_1">
                             <div class="dropdown-select one">
-                              <span>Выберите регион</span>
+                              <span class="one-placeholder">Выберите регион</span>
                               <textarea class="one-text"></textarea>
                               <span class="selected-item hidden"></span>
                             </div>
-                            <div class="dropdown-arrow">&#9660;</div>
-                            <div class="clear-selection hidden">&#x2715;</div>
+                            <div class="dropdown-arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
+                            <div class="clear-selection hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M12,2 C17.5229861,2 22,6.47701386 22,12 C22,17.5229861 17.5229861,22 12,22 C6.47701386,22 2,17.5229861 2,12 C2,6.47701386 6.47701386,2 12,2 Z M13.4142136,12 L16.2426407,9.17157288 C16.633165,8.78104858 16.633165,8.1478836 16.2426407,7.75735931 C15.8521164,7.36683502 15.2189514,7.36683502 14.8284271,7.75735931 L12,10.5857864 L9.17157288,7.75735931 C8.78104858,7.36683502 8.1478836,7.36683502 7.75735931,7.75735931 C7.36683502,8.1478836 7.36683502,8.78104858 7.75735931,9.17157288 L10.5857864,12 L7.75735931,14.8284271 C7.36683502,15.2189514 7.36683502,15.8521164 7.75735931,16.2426407 C8.1478836,16.633165 8.78104858,16.633165 9.17157288,16.2426407 L12,13.4142136 L14.8284271,16.2426407 C15.2189514,16.633165 15.8521164,16.633165 16.2426407,16.2426407 C16.633165,15.8521164 16.633165,15.2189514 16.2426407,14.8284271 L13.4142136,12 Z"/>
+</svg></div>
                             <div class="popup hidden">
-                              <p>Китая</p>
+                              <p>Китай</p>
                               <p>Россия</p>
                               <p>Беларусь</p>
                             </div>
                           
-                          </div>
+                          </div>-->
 
 
 
 
 
 
-                          <!--<div class="select_1" onclick="toggleDropdown(this)">
+                          <div class="select_1" onclick="toggleDropdown(this)">
                             <div class="dropdown-select selectBox" onclick="showCheckboxes()">
                               <select>
                                 <option>Тип учебного заведения</option>
@@ -1213,7 +1161,7 @@ class Navbar extends HTMLElement {
                             <label for="four">Высшие-специальные учебные заведения
                               <input type="checkbox" id="four" class="chekbox_input"/></label>  
                             </div>
-                          </div>-->
+                          </div>
 
 
 
@@ -1237,7 +1185,143 @@ class Navbar extends HTMLElement {
 
                         <div class="select">
                           <p>Регион учебных заведений</p>
-                          <div class="select_2" onclick="toggleDropdown(this)">
+
+
+			  <div class="select_1">
+                            <div class="dropdown-select one">
+                              <span class="one-placeholder">Выберите регион</span>
+                              <textarea class="one-text"></textarea>
+                              <span class="selected-item hidden"></span>
+                            </div>
+                            <div class="dropdown-arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
+                            <div class="clear-selection hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M12,2 C17.5229861,2 22,6.47701386 22,12 C22,17.5229861 17.5229861,22 12,22 C6.47701386,22 2,17.5229861 2,12 C2,6.47701386 6.47701386,2 12,2 Z M13.4142136,12 L16.2426407,9.17157288 C16.633165,8.78104858 16.633165,8.1478836 16.2426407,7.75735931 C15.8521164,7.36683502 15.2189514,7.36683502 14.8284271,7.75735931 L12,10.5857864 L9.17157288,7.75735931 C8.78104858,7.36683502 8.1478836,7.36683502 7.75735931,7.75735931 C7.36683502,8.1478836 7.36683502,8.78104858 7.75735931,9.17157288 L10.5857864,12 L7.75735931,14.8284271 C7.36683502,15.2189514 7.36683502,15.8521164 7.75735931,16.2426407 C8.1478836,16.633165 8.78104858,16.633165 9.17157288,16.2426407 L12,13.4142136 L14.8284271,16.2426407 C15.2189514,16.633165 15.8521164,16.633165 16.2426407,16.2426407 C16.633165,15.8521164 16.633165,15.2189514 16.2426407,14.8284271 L13.4142136,12 Z"/>
+</svg></div>
+                            <div class="popup hidden">
+                              <p>Нижний Новгород</p>
+                              <p>Арзамас</p>
+                              <p>Балахна</p>
+                              <p>Богородск</p>
+                              <p>Бор</p>
+                              <p>Ветлуга</p>
+                              <p>Володарск</p>
+                              <p>Ворсма</p>
+                              <p>Выкса</p>
+                              <p>Горбатов</p>
+                              <p>Городец</p>
+                              <p>Дзержинск</p>
+                              <p>Заволжье</p>
+                              <p>Княгинино</p>
+                              <p>Кстово</p>
+                              <p>Кулебаки</p>
+                              <p>Лукоянов</p>
+                              <p>Лысково</p>
+                              <p>Навашино</p>
+                              <p>Павлово</p>
+                              <p>Первомайск</p>  
+                              <p>Перевоз</p>
+                              <p>Саров</p>
+                              <p>Семенов</p>
+                              <p>Сергач</p>
+                              <p>Урень</p>
+                              <p>Чкаловск</p>
+                              <p>Шахунья</p>
+                              <p>Алтайский край</p>
+                              <p>Амурская область</p>  
+                              <p>Архангельская область</p>
+                              <p>Астраханская область</p>
+                              <p>Белгородская область</p>
+                              <p>Брянская область</p>
+                              <p>Владимирская область</p>  
+                              <p>Волгоградская область</p>
+                              <p>Вологодская область</p>
+                              <p>Воронежская область</p>
+                              <p>Донецкая Народная Республика</p>
+                              <p>Еврейская автономная область</p>
+                              <p>Забайкальский край</p>
+                              <p>Запорожская область</p>
+                              <p>Ивановская область</p>
+                              <p>Иркутская область</p> 
+                              <p>Кабардино-Балкарская Республика</p>
+                              <p>Калининградская область</p>
+                              <p>Калужская область</p>
+                              <p>Камчатский край</p>
+                              <p>Карачаево-Черкесская Республика</p>  
+                              <p>Кемеровская область</p>
+                              <p>Кировская область</p>
+                              <p>Костромская область</p>
+                              <p>Краснодарский край</p>
+                              <p>Красноярский край</p>
+                              <p>Крым</p>
+                              <p>Курганская область</p>
+                              <p>Курская область</p>
+                              <p>Ленинградская область</p> 
+                              <p>Липецкая область</p>
+                              <p>Луганская Народная Республика</p>
+                              <p>Магаданская область</p>
+                              <p>Москва</p>
+                              <p>Московская область</p>
+                              <p>Мурманская область</p>
+                              <p>Ненецкий автономный округ</p>
+                              <p>Нижегородская область</p>                              
+                              <p>Новгородская область</p>
+                              <p>Новосибирская область</p>
+                              <p>Омская область</p>
+                              <p>Оренбургская область</p>
+                              <p>Орловская область</p>
+                              <p>Пензенская область</p>
+                              <p>Пермский край</p>
+                              <p>Приморский край</p>    
+                              <p>Псковская область</p>
+                              <p>Республика Адыгея</p>
+                              <p>Республика Алтай</p>
+                              <p>Республика Башкортостан</p>
+                              <p>Республика Бурятия</p>
+                              <p>Республика Дагестан</p>
+                              <p>Республика Ингушетия</p>
+                              <p>Республика Калмыкия</p>
+                              <p>Республика Карелия</p>
+                              <p>Республика Коми</p>
+                              <p>Республика Марий Эл</p>
+                              <p>Республика Мордовия</p>
+                              <p>Республика Саха (Якутия)</p>
+                              <p>Республика Северная Осетия — Алания</p>
+                              <p>Республика Татарстан</p>    
+                              <p>Республика Тыва</p>
+                              <p>Республика Хакасия</p>
+                              <p>Ростовская область</p>
+                              <p>Рязанская область</p>
+                              <p>Самарская область</p>
+                              <p>Санкт-Петербург</p>
+                              <p>Саратовская область</p>
+                              <p>Сахалинская область</p>
+                              <p>Свердловская область</p>
+                              <p>Севастополь</p>
+                              <p>Смоленская область</p>
+                              <p>Ставропольский край</p>
+                              <p>Тамбовская область</p>
+                              <p>Тверская область</p>
+                              <p>Томская область</p>    
+                              <p>Тульская область</p>
+                              <p>Тюменская область</p>
+                              <p>Удмуртская Республика</p>
+                              <p>Ульяновская область</p>
+                              <p>Хабаровский край</p>
+                              <p>Ханты-Мансийский автономный округ — Югра</p>
+                              <p>Херсонская область</p>
+                              <p>Челябинская область</p>   
+                              <p>Чеченская Республика</p>
+                              <p>Чувашская Республика</p>
+                              <p>Чукотский автономный округ</p>
+                              <p>Ямало-Ненецкий автономный округ</p>
+                              <p>Ярославская область</p>
+                            </div>
+                          
+                          </div>
+
+
+
+                          <!--<div class="select_2" onclick="toggleDropdown(this)">
                             <select name="educational_establishments" class="dropdown-select" id="educational">
                               <option value="Нижний Новгород">Нижний Новгород</option>
                               <option value="Арзамас" >Арзамас</option>
@@ -1357,9 +1441,13 @@ class Navbar extends HTMLElement {
                               <option value="Ямало-Ненецкий автономный округ">Ямало-Ненецкий автономный округ</option>
                               <option value="Ярославская область">Ярославская область</option>
                             </select>
-                            <div class="dropdown-clear" onclick="clearSelection()">&#x2715;</div>
-                            <div class="dropdown-arrow arrow">&#9660;</div>
-                          </div>
+                            <div class="dropdown-clear" onclick="clearSelection()">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="#C3C3C3" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12,2 C17.5229861,2 22,6.47701386 22,12 C22,17.5229861 17.5229861,22 12,22 C6.47701386,22 2,17.5229861 2,12 C2,6.47701386 6.47701386,2 12,2 Z M13.4142136,12 L16.2426407,9.17157288 C16.633165,8.78104858 16.633165,8.1478836 16.2426407,7.75735931 C15.8521164,7.36683502 15.2189514,7.36683502 14.8284271,7.75735931 L12,10.5857864 L9.17157288,7.75735931 C8.78104858,7.36683502 8.1478836,7.36683502 7.75735931,7.75735931 C7.36683502,8.1478836 7.36683502,8.78104858 7.75735931,9.17157288 L10.5857864,12 L7.75735931,14.8284271 C7.36683502,15.2189514 7.36683502,15.8521164 7.75735931,16.2426407 C8.1478836,16.633165 8.78104858,16.633165 9.17157288,16.2426407 L12,13.4142136 L14.8284271,16.2426407 C15.2189514,16.633165 15.8521164,16.633165 16.2426407,16.2426407 C16.633165,15.8521164 16.633165,15.2189514 16.2426407,14.8284271 L13.4142136,12 Z"/>
+                              </svg>
+                            </div>
+                            <div class="dropdown-arrow arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
+                          </div>-->
                         </div>
                       </div>
                       <div class="main_content_pagination">
@@ -1369,22 +1457,6 @@ class Navbar extends HTMLElement {
                           <button> Go </button>
                         </div>
                         <div class="number_of_pagination" id="pag">
-                          ${(() => {
-                            let markup = "";
-                            for (const [index,tab] of this.NUMBER_OF_PAGINATION.entries()) {
-                            const size = String(window.innerWidth)
-                              if (index == 2) {
-                                console.log('size[0]', size[0])
-                                const length = size.length > 3 ? size[0] + size[1] : size[0]
-                                for (let i = 1; i <= length; i++) {
-                                  markup += this.NUMBER_OF_PAGINATION_TEMPLATE(i, i);
-                                }
-                              } else {
-                                markup += this.NUMBER_OF_PAGINATION_TEMPLATE(tab, index);
-                              }
-                            }
-                            return markup;
-                          })()}
                         </div>
                       </div>
                       <div class="mobile_tabel">
@@ -1637,49 +1709,42 @@ class Navbar extends HTMLElement {
                           <button> Go </button>
                         </div>
                         <div class="number_of_pagination" id="pag">
-                          ${(() => {
-                            let markup = "";
-                            const size = String(window.innerWidth)
-                            for (const [index,tab] of this.NUMBER_OF_PAGINATION.entries()) {
-                             if (index == 2) {
-                               console.log('size[0]', size[0])
-                               const length = size.length > 3 ? size[0] + size[1] : size[0]
-                               for (let i = 1; i <= length; i++) {
-                                 markup += this.NUMBER_OF_PAGINATION_TEMPLATE(i, i);
-                               }
-                             } else {
-                               markup += this.NUMBER_OF_PAGINATION_TEMPLATE(tab, index);
-                             }
-                            }
-                            return markup;
-                          })()}
                         </div>
                       </div>
                 </div>
             </div>
+
+
+
+
+
+         
         `;
   }
 
+
+
+
   setup() {
-    const thirdPanel = this.querySelector(".third-panel");
+    const thirdPanel = this.querySelector(".third-panel")
     this.querySelectorAll(".second-panel__tab").forEach((el) => {
       this.querySelectorAll(".third-panel__tab").forEach((el) => {
         el.classList.remove("third-panel__tab_active");
-        if (el.innerHTML.includes("КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ")) {
-          el.classList.add("third-panel__tab_active");
+        if (el.innerHTML.includes('Квалификации Специальности')) {
+          el.classList.add('third-panel__tab_active')
         }
-      });
+      })
       el.addEventListener("click", () => {
         if (el.getAttribute("id") == "journals_tab") {
-          thirdPanel.setAttribute("style", "display:grid;");
+          thirdPanel.setAttribute('style', 'display:grid;')
           this.querySelectorAll(".third-panel__tab").forEach((el) => {
             el.classList.remove("third-panel__tab_active");
-            if (el.innerHTML.includes("КВАЛИФИКАЦИИ СПЕЦИАЛЬНОСТИ")) {
-              el.classList.add("third-panel__tab_active");
+            if (el.innerHTML.includes('Квалификации Специальности')) {
+              el.classList.add('third-panel__tab_active')
             }
           });
         } else {
-          thirdPanel.setAttribute("style", "display:none;");
+          thirdPanel.setAttribute('style', 'display:none;')
         }
         el.classList.add("tab_active");
       });
@@ -1696,17 +1761,9 @@ class Navbar extends HTMLElement {
       });
     });
 
-    document.querySelectorAll(".number_of_pagination_div").forEach(el => {
-      el.addEventListener("click", () => {
-        this.querySelectorAll(".number_of_pagination_div").forEach(elm => {
-          elm.classList.remove("number_of_pagination_div_active")
-        })
-        el.classList.add("number_of_pagination_div_active")
-      })
-    })
-
     const moreTab = this.querySelector(".third-panel__tab.more");
     moreTab.onclick = () => {
+
       const otherTabs = this.querySelector(".other-tabs");
       if (otherTabs.classList.contains("other-tabs_active")) {
         otherTabs.classList.remove("other-tabs_active");
@@ -1721,23 +1778,33 @@ class Navbar extends HTMLElement {
           .querySelector("span.icon")
           .classList.remove("reversed");
       }
+
+
+
+
+      detectedOverflow()
     };
-
-
-
 
     this.querySelectorAll(".third-panel__tab:not(.more)").forEach(
       (el, index) => {
         el.onclick = (event) => {
+          page2 = findTab(el.querySelector('p').innerHTML.toLowerCase())
+          page = el.querySelector('p').innerHTML.toLowerCase()
+          document.title = page.toUpperCase()
+          checkPagePC()
           this.querySelectorAll(".third-panel__tab").forEach((el) => {
+
+
             el.classList.remove("third-panel__tab_active");
           });
+
           el.classList.add("third-panel__tab_active");
         };
+        // if (index == 1) {
+        //   el.classList.add("third-panel__tab_active");
+        // }
       }
-    );  
-
-
+    );
     document.querySelector(".icon.burger").onclick = () => {
       const menu = document.querySelector("#navbar");
       if (menu.classList.contains("mobile-menu-wrapper_active")) {
@@ -1755,70 +1822,28 @@ class Navbar extends HTMLElement {
       }
     });
   }
-
 }
 
-let arrow=document.querySelectorAll('.dropdown-arrow');
-	for(i=0; i<arrow.length; i++){
-		  let thisArrow=arrow[i];
-		  arrow[i].addEventListener('click', function(){
-		    thisArrow.classList.toggle('active');
-	  });
-  }  
+customElements.define("navbar-elem", Navbar);
 
 
-function toggleDropdown(element) {
-  element.parentElement.classList.toggle('active');
-}
 
+
+
+function removeWhitespace(text) {
+  return text.replace(/\s+/g, '');
+};
 
 function toggleDatePickerStart() {
   const datePicker = document.getElementById('date-picker-start')
   datePicker.showPicker();
-}
+};
 
 function toggleDatePickerEnd() {
   const datePicker = document.getElementById('date-picker-end')
   datePicker.showPicker();
-}
+};
 
-function cloasePopap() {
-  const popapImportExporAddNew = document.querySelector('#popap_import_expor_addNew');
-  const addNewOneContent = document.querySelector('.add-new-one-content-2');
-  const fileInputContainer = document.querySelector('.file-input-container');
-
-  addNewOneContent.style.display = "none"
-  fileInputContainer.style.display = "none"
-  popapImportExporAddNew.style.display = "none"
-
-}
-
-function openAddNewOnePopap() {
-  const popapImportExporAddNewContentTitle = document.querySelector('#popap_import_expor_addNew_content_title');
-  const popapImportExporAddNew = document.querySelector('#popap_import_expor_addNew');
-  const addNewOneContent = document.querySelector('.add-new-one-content-2');
-  popapImportExporAddNew.style.display = "flex"
-  addNewOneContent.style.display = "block"
-  popapImportExporAddNewContentTitle.innerText = "Добавить квалификацию"
-}
-
-function openImportPopap() {
-  const popapImportExporAddNew = document.querySelector('#popap_import_expor_addNew');
-  const popapImportExporAddNewContentTitle = document.querySelector('#popap_import_expor_addNew_content_title');
-  const fileInputContainer = document.querySelector('.file-input-container');
-  popapImportExporAddNew.style.display = "flex"
-  fileInputContainer.style.display = "flex"
-  popapImportExporAddNewContentTitle.innerText = "Импорт квалификаций"
-}
-
-function openExportPopap() {
-  const popapImportExporAddNew = document.querySelector('#popap_import_expor_addNew');
-  const popapImportExporAddNewContentTitle = document.querySelector('#popap_import_expor_addNew_content_title');
-  const fileInputContainer = document.querySelector('.file-input-container');
-  popapImportExporAddNew.style.display = "flex"
-  fileInputContainer.style.display = "flex"
-  popapImportExporAddNewContentTitle.innerText = "Экспорт квалификаций"
-}
 
 function onSelect(event) {
   if (event.target.value) {
@@ -1833,52 +1858,107 @@ function clearValue() {
   clearIcon.classList.remove('visible');
 };
 
+function cloasePopap() {
+  const popapImportExporAddNew = document.querySelector('#popap_import_expor_addNew');
+  const addNewOneContent = document.querySelector('.add-new-one-content-2');
+  const fileInputContainer = document.querySelector('.file-input-container');
 
-function toggleDropdown(element) {
-  element.parentElement.classList.toggle('active');
+  addNewOneContent.style.display = "none"
+  fileInputContainer.style.display = "none"
+  popapImportExporAddNew.style.display = "none"
+
+};
+
+function openAddNewOnePopap() {
+  const popapImportExporAddNewContentTitle = document.querySelector('#popap_import_expor_addNew_content_title');
+  const popapImportExporAddNew = document.querySelector('#popap_import_expor_addNew');
+  const addNewOneContent = document.querySelector('.add-new-one-content-2');
+  popapImportExporAddNew.style.display = "flex"
+  addNewOneContent.style.display = "block"
+  popapImportExporAddNewContentTitle.innerText = "Добавить квалификацию"
 }
 
-function getValue(value) {
-  alert(value);
+
+function checkPagePC() {
+  // const searchMenu = document.querySelector('.search-menu')
+  const bt = document.querySelector('.big-title')
+  const btMB = document.querySelector('.brad-crumb__item__text')
+  const btPC = document.querySelector('.big-title-pc')
+
+  bt.innerHTML = 'Журнал: ' + page2.toUpperCase()
+  btMB.innerHTML = 'Журнал: ' + page2.toUpperCase()
+  btPC.innerHTML = page2.toUpperCase()
+  // if (page2 == 'поиск') {
+  //   searchMenu.style.display = 'block'
+  // } else {
+  //   searchMenu.style.display = 'none'
+  // }
+}
+
+function isEllipsisActive(e) {
+  console.log(e.offsetWidth < e.scrollWidth);
+
+  return (e.offsetWidth < e.scrollWidth);
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const toggleButton = document.getElementById('toggleButton');
-  const items = document.querySelectorAll('.third-panel__tab-text');
 
-  // Initial setup for visible items
-  checkOverflow(items);
+function detectedOverflow() {
+  for (let index = 0; index < THRID_PANEL_TABS.length; index++) {
+    const [tabName, icon, content, id, kvota] = THRID_PANEL_TABS[index];
+    if (!tabName || !icon) continue; // Проверяем, что данные существуют
 
-  toggleButton.addEventListener('click', function() {
-      //items.forEach(item => item.classList.toggle('hidden'));
-      checkOverflow(items);
-  });
+    const tabSelector = `.tab${id}`;
+    const tabElement = document.querySelector(tabSelector);
 
-  function checkOverflow(items) {
-      items.forEach(item => {
-          const clone = document.createElement('div');
-          clone.style.position = 'absolute';
-          clone.style.visibility = 'hidden';
-          clone.style.whiteSpace = 'nowrap';
-          clone.style.font = window.getComputedStyle(item).font;
-          clone.textContent = item.textContent;
+    if (tabElement) {
+      const lastChild = tabElement.lastElementChild;
+      const offW = lastChild.offsetWidth;
+      const scrollW = lastChild.scrollWidth;
 
-          document.body.appendChild(clone);
+      // Проверяем, существует ли уже Tippy-инстанция
+      if (tabElement._tippy) {
+        tabElement._tippy.destroy(); // Уничтожаем существующую Tippy-инстанцию
+      }
 
-          if (clone.offsetWidth > item.clientWidth) {
-              item.setAttribute('title', item.textContent);
-          } else {
-              item.removeAttribute('title');
-          }
-
-          document.body.removeChild(clone);
-      });
+      if (offW < scrollW || kvota) {
+        document.querySelector(tabSelector).lastElementChild.style.textAlign = 'left';
+        tippy(tabSelector, {
+          content: content,
+          placement: 'bottom',
+          arrow: false,
+          theme: 'customTip',
+          maxWidth: 'none'
+        });
+      }
+    }
   }
-});
+}
 
 
+window.onresize = () => {
+  detectedOverflow()
+}
 
 
+setTimeout(() => {
+  detectedOverflow();
+}, 500);
 
-customElements.define("navbar-elem", Navbar);
+
+function findTab(text) {
+  for (let k = 0; k < THRID_PANEL_TABS.length; k++) {
+    const item = THRID_PANEL_TABS[k];
+    // Проверяем, является ли элемент строкой
+    let inddex = item.findIndex(e =>
+      typeof e === 'string' && e.toLowerCase() === text.toLowerCase()
+    );
+
+    // Если совпадение найдено, возвращаем индекс
+    if (inddex !== -1) {
+      return THRID_PANEL_TABS[k][inddex+2];
+    }
+  }
+  // Если совпадение не найдено, возвращаем -1
+  return 'Undefined';
+}
