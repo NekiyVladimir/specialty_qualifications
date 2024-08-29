@@ -47,13 +47,43 @@ document.addEventListener('click', function(event) {
 
 const popup = document.querySelector('.popup');
 
+const elements = document.querySelectorAll('.popup-item');
+let isOpen = false;
+
 element.addEventListener('click', function(event) {
-    popup.classList.toggle('visible');
+    if (!isOpen) {
+        // Показываем только первые 10 элементов
+        for (let i = 0; i < elements.length; i++) {
+            if (i < 10) {
+                elements[i].style.display = 'block';
+            } else {
+                elements[i].style.display = 'none';
+            }
+        }
+        popup.classList.add('visible');
+    } else {
+        // Скрываем все элементы
+        elements.forEach(item => {
+            item.style.display = 'none';
+        });
+        popup.classList.remove('visible');
+    }
+
+    isOpen = !isOpen;
     event.stopPropagation();
 });
 
+//element.addEventListener('click', function(event) {
+//    popup.classList.toggle('visible');
+//    event.stopPropagation();
+//});
+
 document.addEventListener('click', function() {
     popup.classList.remove('visible');
+    elements.forEach(item => {
+        item.style.display = 'none';
+    });
+    isOpen = false;
 });
 
 
@@ -71,7 +101,7 @@ searchArea.addEventListener('input', function() {
 
 listItems.forEach(item => {
     item.addEventListener('click', function() {
-        selectedItem.textContent = `Вы выбрали: ${item.textContent}`;
+        selectedItem.textContent = `${item.textContent}`;
         searchArea.classList.remove('one-text_is-active');
         clearSelection.style.display = 'block';
         selectedItem.classList.remove('hidden');
@@ -109,3 +139,20 @@ function toggleDivVisibility() {
 
 toggleDivVisibility();
 selectedItem.addEventListener('input', toggleDivVisibility);
+
+
+
+
+
+
+
+
+
+const two = document.querySelector('.two');
+const arrow2 = document.querySelector('.two-arrow');
+
+
+two.addEventListener('click', function(event) {
+    arrow2.classList.toggle('rotated');
+    event.stopPropagation(); // Останавливает всплытие события
+});

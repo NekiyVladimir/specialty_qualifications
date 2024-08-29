@@ -303,9 +303,9 @@ class Navbar extends HTMLElement {
                     }
                 }
 
-	        /* main_content*/
+	              /* main_content*/
 
-		.main_content{
+		            .main_content{
                   margin-top:20px;
                   display:flex;
                   flex-direction:column;
@@ -315,10 +315,10 @@ class Navbar extends HTMLElement {
                 .main_content p{
                   color:#414141;
                 }
-		.main_content_box{
+		            .main_content_box{
                   padding:35px 40px;
                 }
-		.popap_import_expor_addNew{
+		            .popap_import_expor_addNew{
                   position: fixed;
                   z-index: 2;
                   top: 0;
@@ -330,9 +330,9 @@ class Navbar extends HTMLElement {
                   justify-content:center;
                   align-items:center;
               	}
-		.popap_import_expor_addNew_content_main {
-    		  height: 100%;
-		}
+		            .popap_import_expor_addNew_content_main {
+    		          height: 100%;
+		            }
               	.popap_import_expor_addNew_parrent{
                   max-width: 1200px;
                   width: 100%;
@@ -385,12 +385,12 @@ class Navbar extends HTMLElement {
                   align-items:center;
                   justify-content: center;
               	}
-		.popap_import_expor_addNew_content_footer {
-    		  padding: 32px;
-		}
-		.popap_import_expor_addNew_content_footer >button {
-    		  margin: 7px;
-		}
+		            .popap_import_expor_addNew_content_footer {
+    		          padding: 32px;
+		            }
+		            .popap_import_expor_addNew_content_footer >button {
+    		          margin: 7px;
+		            }
               	.popap_import_expor_addNew_content_footer_button_upload{
                   background: #00B0D9;
                   color: #fff;
@@ -405,7 +405,7 @@ class Navbar extends HTMLElement {
                   outline:none;
                   padding:14px 80px;
               	}
-		.file-input-container {
+		            .file-input-container {
                   position: relative;
                   width: 100%;
                   max-width: 94%;
@@ -425,31 +425,31 @@ class Navbar extends HTMLElement {
                   padding: 10px;
                   box-sizing: border-box;
               	}
-		.file-input-container_2 {
-    		  position: relative;
-    		  width: 100%;
-    		  max-width: 94%;
-    		  margin: 0px 0;
-    		  display: flex;
-    		  align-items: center;
-    		  padding: 0 20px 10px 35px;
-		}
-		.file-input-label_2 {
-    		  display: block;
-    		  color: #5F5F5F;
-    		  margin: 10px 25px 0 0;
-    		  max-width: 150px;
-    		  width: 100%;
-		}
-		.file-input-container_2 > .file-input_2 {
-    		  position: relative;
-    		  display: flex;
-    		  align-items: center;
-    		  width: 100%;
-    		  border: 1px solid #C1C1C1;
-    		  padding: 10px;
-    		  box-sizing: border-box;
-		}
+		            .file-input-container_2 {
+    		          position: relative;
+    		          width: 100%;
+    		          max-width: 94%;
+    		          margin: 0px 0;
+    		          display: flex;
+    		          align-items: center;
+    		          padding: 0 20px 10px 35px;
+		            }
+		            .file-input-label_2 {
+    		          display: block;
+    		          color: #5F5F5F;
+    		          margin: 10px 25px 0 0;
+    		          max-width: 150px;
+    		          width: 100%;
+		            }
+		            .file-input-container_2 > .file-input_2 {
+    		          position: relative;
+    		          display: flex;
+    		          align-items: center;
+    		          width: 100%;
+    		          border: 1px solid #C1C1C1;
+    		          padding: 10px;
+    		          box-sizing: border-box;
+		            }
 
               	.file-input input[type="file"] {
                   position: absolute;
@@ -473,12 +473,12 @@ class Navbar extends HTMLElement {
                   color: #5F5F5F;
                   margin:10px 25px 0 0;
               	}
-		.select_op{
+		            .select_op{
                     display: flex;
                     align-items: center;
                     padding: 0 20px 10px 35px;
                 }
-		.custom-select-container {
+		            .custom-select-container {
                     position: relative;
                     width: 200px; /* Adjust as needed */
                     margin: 20px 0;
@@ -508,7 +508,7 @@ class Navbar extends HTMLElement {
                     transform: translateY(-50%);
                     pointer-events: none;
                 }
-		.clear-icon {
+		            .clear-icon {
                     position: absolute;
                     right: 10px;
                     top: 50%;
@@ -520,13 +520,14 @@ class Navbar extends HTMLElement {
                 .clear-icon.visible {
                     display: inline;
                 }
-		.content_header_section{
+		            .content_header_section{
                   display: grid;
                   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            	}
-		.date-picker-container{
+            	  }
+		            .date-picker-container{
                   position: relative;
                   border:1px solid #9C9C9C;
+                  height: 50px;
               	}
               	.date-picker-container::before{
                   content:'';
@@ -549,7 +550,7 @@ class Navbar extends HTMLElement {
               	.date-picker-text img{
                   margin:0 6px 0 0 ;
               	}
-		.add-new-one{
+		            .add-new-one{
                   color:#9C9C9C;
                   display: flex;
                   align-items: center;
@@ -558,11 +559,11 @@ class Navbar extends HTMLElement {
                   cursor:pointer;
                   border:1px solid #9C9C9C;
               	}
-		.add-new-one-content-2{
+		            .add-new-one-content-2{
                   margin-top:14px;
                   display:none;
                 }
-		.in-total{
+		            .in-total{
                   color:#9C9C9C;
                   display: flex;
                   align-items: center;
@@ -574,7 +575,7 @@ class Navbar extends HTMLElement {
               	.in-total >span{
                   color:#4fa95d;
               	}
-		.import_export{
+		            .import_export{
                   color:#9C9C9C;
                   display: flex;
                   align-items: center;
@@ -583,29 +584,32 @@ class Navbar extends HTMLElement {
                   border:1px solid #9C9C9C;
                   cursor:pointer;
               	}
-		.main_content_select{
+		            .main_content_select{
                   display:flex;
                 }
-		.select {
+		            .select {
                   position: relative;
                   display: flex;
                   flex-direction:column;
                   gap:10px;
                   width: 33.3%;
                 }
-		.select_1, .select_2{
+		            .select_1, .select_2{
                   position: relative;
                 }
 
                 .select.active .dropdown-arrow {
                   transform: rotate(180deg);
                 }
-		.select_page{
+		            .select_page{
                   display:flex;
                   gap:15px;
                   align-items:center;
                   cursor:pointer;
                 }
+                .select p {
+                  font-size: 18px
+                }  
                 .select_page p{
                   font-size:14px
                 }
@@ -633,6 +637,19 @@ class Navbar extends HTMLElement {
                   color:#7D7D7D;
                   outline: none;
                   cursor:pointer;
+                }
+
+                .dropdown-select_2 {
+                  width: 100%;
+                  padding: 12px;
+                  padding-right: 40px;
+                  border: 1px solid #ccc;
+                  box-sizing: border-box;
+                  -moz-appearance: none;
+                  appearance: none;
+                  color: #7D7D7D;
+                  outline: none;
+                  cursor: pointer;
                 }
               
                 .dropdown-container::after {
@@ -671,15 +688,30 @@ class Navbar extends HTMLElement {
                   display:inline-block;
                 }
 
+                .two-arrow {
+                  position: absolute;
+                  right: 50px;
+                  top: 13px;
+                  height: 18px;
+                  width: 18px;
+                  transform: rotate(0deg);
+                  pointer-events: none;
+                  font-size: 14px;
+                  color: #999;
+                  display: inline-block;
+                }
+                .two-arrow.rotated {
+                  transform: rotate(180deg);
+                }
                 .dropdown-arrow.rotated {
                   transform: rotate(180deg);
                 }
-		.one-placeholder {
-                  font-size: 14px;
+		            .one-placeholder, .two-placeholder {
+                  font-size: 18px;
                 }
 
-                .one {
-                  height: 41.6px;
+                .one, .two {
+                  height: 54px;
                 }
                 
                 .one-text {
@@ -699,6 +731,10 @@ class Navbar extends HTMLElement {
                   position: absolute;
                   left: 0;
                 }
+                .popup p {
+                  height: 30px;
+                  color: #000000;
+                }
 
                 .hidden {
                   display: none;
@@ -711,6 +747,7 @@ class Navbar extends HTMLElement {
                 
                 .selected-item {
                   display: block;
+                  color: #000000;
                 }
 
                 .icon {
@@ -746,136 +783,137 @@ class Navbar extends HTMLElement {
                 }
 
                 .one-text_is-active {
-                  height: 20px;
+                  height: 26px;
+                  font-size: 18px;
                 }
-		.main_content_pagination{
+		            .main_content_pagination{
                   display:flex;
                   justify-content:space-between
                 }
-		table.qualification-journal {
-    		  width: 100%;
-    		  border-collapse: collapse;
-    		  margin-top: 20px;
-		}
-		table.qualification-journal caption {
-    		  font-size: 1.5em;
-    		  margin-bottom: 10px;
-    		  font-weight: bold;
-    		  text-align: start;
-		}
-		table.qualification-journal th {
-    		  color: #9C9C9C;
-    		  font-weight: 100;
-    		  border: 1px solid #ddd;
-    		  padding: 8px;
-    		  text-align: center;
-    		  font-size: 14px;
-		}
-		table.qualification-journal td {
-    		  border: 1px solid #ddd;
-    		  padding: 8px;
-    		  text-align: left;
-		}
-		.edit_td >a:nth-child(1) {
-    		  margin-right: 20px;
-    		  margin-left: 20px;
-		}
-		table.qualification-journal td a {
-    		  text-decoration: none;
-		}
-		table.qualification-journal td .icon {
-    		  width: 20px;
-    		  height: 20px;
-    		  margin-right: 5px;
-		}  
-		@media (width <= 880px) {
+		            table.qualification-journal {
+    		          width: 100%;
+    		          border-collapse: collapse;
+    		          margin-top: 20px;
+		            }
+		            table.qualification-journal caption {
+    		          font-size: 1.5em;
+    		          margin-bottom: 10px;
+    		          font-weight: bold;
+    		          text-align: start;
+		            }
+		            table.qualification-journal th {
+    		          color: #9C9C9C;
+    		          font-weight: 100;
+    		          border: 1px solid #ddd;
+    		          padding: 8px;
+    		          text-align: center;
+    		          font-size: 14px;
+		            }
+		            table.qualification-journal td {
+    		          border: 1px solid #ddd;
+    		          padding: 8px;
+    		          text-align: left;
+		            }
+		            .edit_td >a:nth-child(1) {
+    		          margin-right: 20px;
+    		          margin-left: 20px;
+		            }
+		            table.qualification-journal td a {
+    		          text-decoration: none;
+		            }
+		            table.qualification-journal td .icon {
+    		          width: 20px;
+    		          height: 20px;
+    		          margin-right: 5px;
+		            }  
+		            @media (width <= 880px) {
                   .main_content_box{
-                        padding: 0px 30px 30px 30px !important; 
+                    padding: 0px 30px 30px 30px !important; 
                   }
-		  .content_header_section{
+		              .content_header_section{
                     grid-template-columns: 1fr 1fr;
                   }
-		  .main_content_select{
+		              .main_content_select{
                     gap:25px !important;
                     flex-direction:column;
                   }
                   .select{
                     width:100% !important;
                   }
-		  .main_content_pagination{
+		              .main_content_pagination{
                     display:none !important;
                   }
-		  .element {
+		              .element {
                     height: 50px;
                   }
-		  .mobile_tabel {
-        	    display: block;
-    		  }
-		  .cvalication_item > div {
-        	    border: 1px solid #ccc;
-        	    margin: 20px 0;
-        	    display: flex;
-        	    align-items: center;
-        	    padding: 8px;
-    		  }
-		  .cvalication_item > div input {
-        	    border: none;
-         	    outline: none;
-        	    padding: 0 0 0 5px;
-    		  }
-		  .min_tabel {
-        	    border-top: 4px solid #00B0D9;
-        	    padding: 12px;
-        	    display: flex;
-        	    margin-top: 20px;
-    	    	  }
-		  .min_tabel_left {
-        	    border-right: 0.5px solid #808080;
-    		  }
-		  .min_tabel_left >div {
-        	    color: #808080;
-        	    font-size: 15px;
-        	    padding: 8px 12px 8px 2px;
-        	    border-top: 1px solid #808080;
-    		  }
-		  .min_tabel_left > div:last-child {
-        	    border-bottom: 1px solid #808080;
-    		  }
-		  .min_tabel_right {
-        	    width: 100%;
-    		  }
-		  .min_tabel_right >div {
-        	    display: flex;
-        	    align-items: center;
-        	    color: #808080;
-        	    font-size: 15px;
-        	    padding: 8px 0 8px 2px;
-        	    border-top: 1px solid #808080;
-    		  }
-		  .min_tabel_right_first {
-        	    padding: 5px 0 5px 2px !important;
-		    display: flex;
-        	    justify-content: space-between;
-    		  }
-		  .min_tabel_right_first >div >img {
-        	    width: 20.5px;
-        	    margin-right: 40px;
-    		  }
-		  .min_tabel_right > div:last-child {
-        	    border-bottom: 1px solid #808080;
-    		  }
-		  .qualification-journal {
-        	    display: none !important;
-    		  }
-		}
-		@media(width <= 561px) {
+		              .mobile_tabel {
+        	          display: block;
+    		          }
+		              .cvalication_item > div {
+        	          border: 1px solid #ccc;
+        	          margin: 20px 0;
+        	          display: flex;
+        	          align-items: center;
+        	          padding: 8px;
+    		          }
+		              .cvalication_item > div input {
+        	          border: none;
+         	          outline: none;
+        	          padding: 0 0 0 5px;
+    		          }
+		              .min_tabel {
+        	          border-top: 4px solid #00B0D9;
+        	          padding: 12px;
+        	          display: flex;
+        	          margin-top: 20px;
+    	    	      }
+		              .min_tabel_left {
+        	          border-right: 0.5px solid #808080;
+    		          }
+		              .min_tabel_left >div {
+        	          color: #808080;
+        	          font-size: 15px;
+        	          padding: 8px 12px 8px 2px;
+        	          border-top: 1px solid #808080;
+    		          }
+		              .min_tabel_left > div:last-child {
+        	          border-bottom: 1px solid #808080;
+    		          }
+		              .min_tabel_right {
+        	          width: 100%;
+    		          }
+		              .min_tabel_right >div {
+        	          display: flex;
+        	          align-items: center;
+        	          color: #808080;
+        	          font-size: 15px;
+        	          padding: 8px 0 8px 2px;
+        	          border-top: 1px solid #808080;
+    		          }
+		              .min_tabel_right_first {
+        	          padding: 5px 0 5px 2px !important;
+		                display: flex;
+        	          justify-content: space-between;
+    		          }
+		              .min_tabel_right_first >div >img {
+        	          width: 20.5px;
+        	          margin-right: 40px;
+    		          }
+		              .min_tabel_right > div:last-child {
+        	          border-bottom: 1px solid #808080;
+    		          }
+		              .qualification-journal {
+        	          display: none !important;
+    		          }
+		            }
+		            @media(width <= 561px) {
                   .content_header_section{
                     grid-template-columns: 1fr;
                   }
                   .content_header_section >div{
                     height:50px;
                   }
-		}
+		            }
             </style>
         `;
     this.innerHTML = /*html*/ `
@@ -1121,73 +1159,27 @@ class Navbar extends HTMLElement {
                       <div class="main_content_select">
                         <div class="select">
                           <p>Тип учебного заведения</p>
-                          <!--<div class="select_1">
-                            <div class="dropdown-select one">
-                              <span class="one-placeholder">Выберите регион</span>
-                              <textarea class="one-text"></textarea>
-                              <span class="selected-item hidden"></span>
+                          <div class="select_2">
+                            <div class="dropdown-select_2 two">
+                              <span class="two-placeholder">Тип учебного заведения</span>
                             </div>
-                            <div class="dropdown-arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
-                            <div class="clear-selection hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <path fill-rule="evenodd" d="M12,2 C17.5229861,2 22,6.47701386 22,12 C22,17.5229861 17.5229861,22 12,22 C6.47701386,22 2,17.5229861 2,12 C2,6.47701386 6.47701386,2 12,2 Z M13.4142136,12 L16.2426407,9.17157288 C16.633165,8.78104858 16.633165,8.1478836 16.2426407,7.75735931 C15.8521164,7.36683502 15.2189514,7.36683502 14.8284271,7.75735931 L12,10.5857864 L9.17157288,7.75735931 C8.78104858,7.36683502 8.1478836,7.36683502 7.75735931,7.75735931 C7.36683502,8.1478836 7.36683502,8.78104858 7.75735931,9.17157288 L10.5857864,12 L7.75735931,14.8284271 C7.36683502,15.2189514 7.36683502,15.8521164 7.75735931,16.2426407 C8.1478836,16.633165 8.78104858,16.633165 9.17157288,16.2426407 L12,13.4142136 L14.8284271,16.2426407 C15.2189514,16.633165 15.8521164,16.633165 16.2426407,16.2426407 C16.633165,15.8521164 16.633165,15.2189514 16.2426407,14.8284271 L13.4142136,12 Z"/>
-</svg></div>
-                            <div class="popup hidden">
-                              <p>Китай</p>
-                              <p>Россия</p>
-                              <p>Беларусь</p>
-                            </div>
-                          
-                          </div>-->
-
-
-
-
-
-
-                          <div class="select_1" onclick="toggleDropdown(this)">
-                            <div class="dropdown-select selectBox" onclick="showCheckboxes()">
-                              <select>
-                                <option>Тип учебного заведения</option>
-                              </select>
-                              <div class="overSelect"></div>
-                            </div>
-                            <div id="checkboxes">
-                            <label for="one">По всем
-                              <input type="checkbox" id="one" class="chekbox_input" /></label>
-                            <label for="two">Школы, гимназии 
-                              <input type="checkbox" id="two" class="chekbox_input"/></label>
-                            <label for="three">Среднее-специальное учебные заведения
-                              <input type="checkbox" id="three" class="chekbox_input"/></label>
-                            <label for="four">Высшие-специальные учебные заведения
-                              <input type="checkbox" id="four" class="chekbox_input"/></label>  
+                            <div class="two-arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
+                            <div class="popup2">
+                              <span><label for="check1">1</label><input type="checkbox" id="check1"></span>
+                              <span><label for="check2">2</label><input type="checkbox" id="check2"></span>
+                              <span><label for="check3">3</label><input type="checkbox" id="check3"></span>
+                              <span><label for="check4">4</label><input type="checkbox" id="check4"></span>
                             </div>
                           </div>
-
-
-
-                          
-
-
-                          <!--<div class="select_1" onclick="toggleDropdown(this)">
-                            <div name="educational_establishments" class="dropdown-select" id="educational" onchange="getValue(this.value);">
-                              <span style="font-size: 13px;">Поиск</span>
-                            </div>
-                            <select name="educational_establishments" class="dropdown-select" id="educational" onchange="getValue(this.value);">
-                              <option value="По всем">По всем</option>
-                              <option value="Школы, гимназии">Школы, гимназии</option>
-                              <option value="Среднее-специальное учебные заведения">Среднее-специальное учебные заведения</option>
-                              <option value="Высшие-специальные учебные заведения">Высшие-специальные учебные заведения</option>
-                            </select>
-                            <div class="dropdown-arrow">&#9660;</div>
-                            <div class="dropdown-clear" type="button" id="clearBtn" data-index="-1">&#x2715;</div>
-                          </div>-->
                         </div>
+
+
 
                         <div class="select">
                           <p>Регион учебных заведений</p>
 
 
-			  <div class="select_1">
+			                    <div class="select_1">
                             <div class="dropdown-select one">
                               <span class="one-placeholder">Выберите регион</span>
                               <textarea class="one-text"></textarea>
@@ -1198,123 +1190,123 @@ class Navbar extends HTMLElement {
   <path fill-rule="evenodd" d="M12,2 C17.5229861,2 22,6.47701386 22,12 C22,17.5229861 17.5229861,22 12,22 C6.47701386,22 2,17.5229861 2,12 C2,6.47701386 6.47701386,2 12,2 Z M13.4142136,12 L16.2426407,9.17157288 C16.633165,8.78104858 16.633165,8.1478836 16.2426407,7.75735931 C15.8521164,7.36683502 15.2189514,7.36683502 14.8284271,7.75735931 L12,10.5857864 L9.17157288,7.75735931 C8.78104858,7.36683502 8.1478836,7.36683502 7.75735931,7.75735931 C7.36683502,8.1478836 7.36683502,8.78104858 7.75735931,9.17157288 L10.5857864,12 L7.75735931,14.8284271 C7.36683502,15.2189514 7.36683502,15.8521164 7.75735931,16.2426407 C8.1478836,16.633165 8.78104858,16.633165 9.17157288,16.2426407 L12,13.4142136 L14.8284271,16.2426407 C15.2189514,16.633165 15.8521164,16.633165 16.2426407,16.2426407 C16.633165,15.8521164 16.633165,15.2189514 16.2426407,14.8284271 L13.4142136,12 Z"/>
 </svg></div>
                             <div class="popup hidden">
-                              <p>Нижний Новгород</p>
-                              <p>Арзамас</p>
-                              <p>Балахна</p>
-                              <p>Богородск</p>
-                              <p>Бор</p>
-                              <p>Ветлуга</p>
-                              <p>Володарск</p>
-                              <p>Ворсма</p>
-                              <p>Выкса</p>
-                              <p>Горбатов</p>
-                              <p>Городец</p>
-                              <p>Дзержинск</p>
-                              <p>Заволжье</p>
-                              <p>Княгинино</p>
-                              <p>Кстово</p>
-                              <p>Кулебаки</p>
-                              <p>Лукоянов</p>
-                              <p>Лысково</p>
-                              <p>Навашино</p>
-                              <p>Павлово</p>
-                              <p>Первомайск</p>  
-                              <p>Перевоз</p>
-                              <p>Саров</p>
-                              <p>Семенов</p>
-                              <p>Сергач</p>
-                              <p>Урень</p>
-                              <p>Чкаловск</p>
-                              <p>Шахунья</p>
-                              <p>Алтайский край</p>
-                              <p>Амурская область</p>  
-                              <p>Архангельская область</p>
-                              <p>Астраханская область</p>
-                              <p>Белгородская область</p>
-                              <p>Брянская область</p>
-                              <p>Владимирская область</p>  
-                              <p>Волгоградская область</p>
-                              <p>Вологодская область</p>
-                              <p>Воронежская область</p>
-                              <p>Донецкая Народная Республика</p>
-                              <p>Еврейская автономная область</p>
-                              <p>Забайкальский край</p>
-                              <p>Запорожская область</p>
-                              <p>Ивановская область</p>
-                              <p>Иркутская область</p> 
-                              <p>Кабардино-Балкарская Республика</p>
-                              <p>Калининградская область</p>
-                              <p>Калужская область</p>
-                              <p>Камчатский край</p>
-                              <p>Карачаево-Черкесская Республика</p>  
-                              <p>Кемеровская область</p>
-                              <p>Кировская область</p>
-                              <p>Костромская область</p>
-                              <p>Краснодарский край</p>
-                              <p>Красноярский край</p>
-                              <p>Крым</p>
-                              <p>Курганская область</p>
-                              <p>Курская область</p>
-                              <p>Ленинградская область</p> 
-                              <p>Липецкая область</p>
-                              <p>Луганская Народная Республика</p>
-                              <p>Магаданская область</p>
-                              <p>Москва</p>
-                              <p>Московская область</p>
-                              <p>Мурманская область</p>
-                              <p>Ненецкий автономный округ</p>
-                              <p>Нижегородская область</p>                              
-                              <p>Новгородская область</p>
-                              <p>Новосибирская область</p>
-                              <p>Омская область</p>
-                              <p>Оренбургская область</p>
-                              <p>Орловская область</p>
-                              <p>Пензенская область</p>
-                              <p>Пермский край</p>
-                              <p>Приморский край</p>    
-                              <p>Псковская область</p>
-                              <p>Республика Адыгея</p>
-                              <p>Республика Алтай</p>
-                              <p>Республика Башкортостан</p>
-                              <p>Республика Бурятия</p>
-                              <p>Республика Дагестан</p>
-                              <p>Республика Ингушетия</p>
-                              <p>Республика Калмыкия</p>
-                              <p>Республика Карелия</p>
-                              <p>Республика Коми</p>
-                              <p>Республика Марий Эл</p>
-                              <p>Республика Мордовия</p>
-                              <p>Республика Саха (Якутия)</p>
-                              <p>Республика Северная Осетия — Алания</p>
-                              <p>Республика Татарстан</p>    
-                              <p>Республика Тыва</p>
-                              <p>Республика Хакасия</p>
-                              <p>Ростовская область</p>
-                              <p>Рязанская область</p>
-                              <p>Самарская область</p>
-                              <p>Санкт-Петербург</p>
-                              <p>Саратовская область</p>
-                              <p>Сахалинская область</p>
-                              <p>Свердловская область</p>
-                              <p>Севастополь</p>
-                              <p>Смоленская область</p>
-                              <p>Ставропольский край</p>
-                              <p>Тамбовская область</p>
-                              <p>Тверская область</p>
-                              <p>Томская область</p>    
-                              <p>Тульская область</p>
-                              <p>Тюменская область</p>
-                              <p>Удмуртская Республика</p>
-                              <p>Ульяновская область</p>
-                              <p>Хабаровский край</p>
-                              <p>Ханты-Мансийский автономный округ — Югра</p>
-                              <p>Херсонская область</p>
-                              <p>Челябинская область</p>   
-                              <p>Чеченская Республика</p>
-                              <p>Чувашская Республика</p>
-                              <p>Чукотский автономный округ</p>
-                              <p>Ямало-Ненецкий автономный округ</p>
-                              <p>Ярославская область</p>
+                              <p class="popup-item">Нижний Новгород</p>
+                              <p class="popup-item">Арзамас</p>
+                              <p class="popup-item">Балахна</p>
+                              <p class="popup-item">Богородск</p>
+                              <p class="popup-item">Бор</p>
+                              <p class="popup-item">Ветлуга</p>
+                              <p class="popup-item">Володарск</p>
+                              <p class="popup-item">Ворсма</p>
+                              <p class="popup-item">Выкса</p>
+                              <p class="popup-item">Горбатов</p>
+                              <p class="popup-item">Городец</p>
+                              <p class="popup-item">Дзержинск</p>
+                              <p class="popup-item">Заволжье</p>
+                              <p class="popup-item">Княгинино</p>
+                              <p class="popup-item">Кстово</p>
+                              <p class="popup-item">Кулебаки</p>
+                              <p class="popup-item">Лукоянов</p>
+                              <p class="popup-item">Лысково</p>
+                              <p class="popup-item">Навашино</p>
+                              <p class="popup-item">Павлово</p>
+                              <p class="popup-item">Первомайск</p>  
+                              <p class="popup-item">Перевоз</p>
+                              <p class="popup-item">Саров</p>
+                              <p class="popup-item">Семенов</p>
+                              <p class="popup-item">Сергач</p>
+                              <p class="popup-item">Урень</p>
+                              <p class="popup-item">Чкаловск</p>
+                              <p class="popup-item">Шахунья</p>
+                              <p class="popup-item">Алтайский край</p>
+                              <p class="popup-item">Амурская область</p>  
+                              <p class="popup-item">Архангельская область</p>
+                              <p class="popup-item">Астраханская область</p>
+                              <p class="popup-item">Белгородская область</p>
+                              <p class="popup-item">Брянская область</p>
+                              <p class="popup-item">Владимирская область</p>  
+                              <p class="popup-item">Волгоградская область</p>
+                              <p class="popup-item">Вологодская область</p>
+                              <p class="popup-item">Воронежская область</p>
+                              <p class="popup-item">Донецкая Народная Республика</p>
+                              <p class="popup-item">Еврейская автономная область</p>
+                              <p class="popup-item">Забайкальский край</p>
+                              <p class="popup-item">Запорожская область</p>
+                              <p class="popup-item">Ивановская область</p>
+                              <p class="popup-item">Иркутская область</p> 
+                              <p class="popup-item">Кабардино-Балкарская Республика</p>
+                              <p class="popup-item">Калининградская область</p>
+                              <p class="popup-item">Калужская область</p>
+                              <p class="popup-item">Камчатский край</p>
+                              <p class="popup-item">Карачаево-Черкесская Республика</p>  
+                              <p class="popup-item">Кемеровская область</p>
+                              <p class="popup-item">Кировская область</p>
+                              <p class="popup-item">Костромская область</p>
+                              <p class="popup-item">Краснодарский край</p>
+                              <p class="popup-item">Красноярский край</p>
+                              <p class="popup-item">Крым</p>
+                              <p class="popup-item">Курганская область</p>
+                              <p class="popup-item">Курская область</p>
+                              <p class="popup-item">Ленинградская область</p> 
+                              <p class="popup-item">Липецкая область</p>
+                              <p class="popup-item">Луганская Народная Республика</p>
+                              <p class="popup-item">Магаданская область</p>
+                              <p class="popup-item">Москва</p>
+                              <p class="popup-item">Московская область</p>
+                              <p class="popup-item">Мурманская область</p>
+                              <p class="popup-item">Ненецкий автономный округ</p>
+                              <p class="popup-item">Нижегородская область</p>                              
+                              <p class="popup-item">Новгородская область</p>
+                              <p class="popup-item">Новосибирская область</p>
+                              <p class="popup-item">Омская область</p>
+                              <p class="popup-item">Оренбургская область</p>
+                              <p class="popup-item">Орловская область</p>
+                              <p class="popup-item">Пензенская область</p>
+                              <p class="popup-item">Пермский край</p>
+                              <p class="popup-item">Приморский край</p>    
+                              <p class="popup-item">Псковская область</p>
+                              <p class="popup-item">Республика Адыгея</p>
+                              <p class="popup-item">Республика Алтай</p>
+                              <p class="popup-item">Республика Башкортостан</p>
+                              <p class="popup-item">Республика Бурятия</p>
+                              <p class="popup-item">Республика Дагестан</p>
+                              <p class="popup-item">Республика Ингушетия</p>
+                              <p class="popup-item">Республика Калмыкия</p>
+                              <p class="popup-item">Республика Карелия</p>
+                              <p class="popup-item">Республика Коми</p>
+                              <p class="popup-item">Республика Марий Эл</p>
+                              <p class="popup-item">Республика Мордовия</p>
+                              <p class="popup-item">Республика Саха (Якутия)</p>
+                              <p class="popup-item">Республика Северная Осетия — Алания</p>
+                              <p class="popup-item">Республика Татарстан</p>    
+                              <p class="popup-item">Республика Тыва</p>
+                              <p class="popup-item">Республика Хакасия</p>
+                              <p class="popup-item">Ростовская область</p>
+                              <p class="popup-item">Рязанская область</p>
+                              <p class="popup-item">Самарская область</p>
+                              <p class="popup-item">Санкт-Петербург</p>
+                              <p class="popup-item">Саратовская область</p>
+                              <p class="popup-item">Сахалинская область</p>
+                              <p class="popup-item">Свердловская область</p>
+                              <p class="popup-item">Севастополь</p>
+                              <p class="popup-item">Смоленская область</p>
+                              <p class="popup-item">Ставропольский край</p>
+                              <p class="popup-item">Тамбовская область</p>
+                              <p class="popup-item">Тверская область</p>
+                              <p class="popup-item">Томская область</p>    
+                              <p class="popup-item">Тульская область</p>
+                              <p class="popup-item">Тюменская область</p>
+                              <p class="popup-item">Удмуртская Республика</p>
+                              <p class="popup-item">Ульяновская область</p>
+                              <p class="popup-item">Хабаровский край</p>
+                              <p class="popup-item">Ханты-Мансийский автономный округ — Югра</p>
+                              <p class="popup-item">Херсонская область</p>
+                              <p class="popup-item">Челябинская область</p>   
+                              <p class="popup-item">Чеченская Республика</p>
+                              <p class="popup-item">Чувашская Республика</p>
+                              <p class="popup-item">Чукотский автономный округ</p>
+                              <p class="popup-item">Ямало-Ненецкий автономный округ</p>
+                              <p class="popup-item">Ярославская область</p>
                             </div>
                           
                           </div>
