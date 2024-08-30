@@ -316,7 +316,7 @@ class Navbar extends HTMLElement {
                   color:#414141;
                 }
 		            .main_content_box{
-                  padding:35px 40px;
+                  padding:35px 25px;
                 }
 		            .popap_import_expor_addNew{
                   position: fixed;
@@ -523,12 +523,18 @@ class Navbar extends HTMLElement {
 		            .content_header_section{
                   display: grid;
                   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                  font-size: 18px;
             	  }
 		            .date-picker-container{
                   position: relative;
                   border:1px solid #9C9C9C;
                   height: 50px;
               	}
+                .date-picker-start, .date-picker-end {
+                  color: var(--green);
+                  margin-left: 6.5px;
+                  font-size: 18px;
+                }
               	.date-picker-container::before{
                   content:'';
                   position:absolute;
@@ -538,18 +544,48 @@ class Navbar extends HTMLElement {
               	}
               	.date-picker-text{
                   position: absolute;
-                  z-index: 0;
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   width: 100%;
                   height:100%;
-                    cursor:pointer;
+                  cursor:pointer;
                   color:#9C9C9C;
               	}
               	.date-picker-text img{
                   margin:0 6px 0 0 ;
               	}
+
+                [data-value] {
+                  position: relative; /* Относительное позиционирование */ 
+                }
+                [data-value]:hover::before {
+                  z-index: 2;
+                  content: "";
+                  position: absolute;
+                  transform: translateY(20px);
+                  border: 20px solid transparent;
+                  border-bottom: 20px solid #D3D3D3;
+                  }
+                [data-value]::after {
+                  content: attr(data-value); /* Выводим текст */
+                  position: absolute; /* Абсолютное позиционирование */
+                  background: #D3D3D3; /* Синий цвет фона */
+                  text-align: center;
+                  color: #7d7d7d; /* Цвет текста */
+                  padding: 0.5em; /* Поля вокруг текста */
+                  pointer-events: none; /* Подсказка */
+                  opacity: 0; /* Подсказка невидима */
+                  text-transform: uppercase;
+                  
+                } 
+                [data-value]:hover::after {
+                  opacity: 1; /* Показываем подсказку */
+                  top: 3.5em; /* Положение подсказки */
+                  z-index: 2;
+                }
+
+ 
 		            .add-new-one{
                   color:#9C9C9C;
                   display: flex;
@@ -568,6 +604,7 @@ class Navbar extends HTMLElement {
                   display: flex;
                   align-items: center;
                   justify-content: center;
+                  widht: 100%;
                   background:#fff;
                   border:1px solid #9C9C9C;
                   cursor:pointer;
@@ -1122,37 +1159,35 @@ class Navbar extends HTMLElement {
             </div>
         </div>
         <div class="content_header_section">
-            <div class="date-picker-container element"
+            <div class="date-picker-container element" 
                 onclick="toggleDatePickerStart()">
-                <div class="date-picker-text">
-                    <img src="./assets/icons/fixed_icons/today_5018 2.svg" />
+                <div class="date-picker-text" data-value="введите дату начала поиска">
                     DATA OT
+                    <span class="date-picker-start">10.09.2024</span>
                 </div>
-                <input type="date" id="date-picker-start"
-                    class="date-picker-input">
             </div>
-            <div class="date-picker-container element" onclick="toggleDatePickerEnd()">
-                <div class="date-picker-text">
-                    <img src="./assets/icons/fixed_icons/today_5018 2.svg" />
+            <div class="date-picker-container element">
+                <div class="date-picker-text" data-value="введите дату конца поиска">
                     DATA ДО
+                    <span class="date-picker-end">20.09.2024</span>
                 </div>
-                <input type="date" id="date-picker-end"
-                    class="date-picker-input">
+
             </div>
-            <div class="add-new-one element" onclick="openAddNewOnePopap()">
+            <div class="add-new-one element" data-value="добавить новую вакансию" onclick="openAddNewOnePopap()">
                 + ADD A NEW ONE
             </div>
-            <div class="in-total element">
-                <img src='./assets/icons/fixed_icons/Vector_12.svg' />
-                DESELECT: <span>298732</span>
-            </div>
-            <div class="import_export element" onclick="openImportPopap()">
+            
+            <div class="import_export element" data-value="экспортировать" onclick="openImportPopap()">
                 <img src='./assets/icons/fixed_icons/Group36_1 .svg'  />
                 IMPORT
             </div>
-            <div class="import_export element" onclick="openExportPopap()">
+            <div class="import_export element" data-value="импортировать" onclick="openExportPopap()">
                 <img src='./assets/icons/fixed_icons/Group36.svg' />
                 EXPORT
+            </div>
+            <div class="in-total element" data-value="удалить вакансию">
+                <img src='./assets/icons/fixed_icons/Decelect.svg' />
+                DESELECT
             </div>
         </div>
                 <div class="main_content">
@@ -1165,10 +1200,10 @@ class Navbar extends HTMLElement {
                             </div>
                             <div class="two-arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
                             <div class="popup2">
-                              <span><label for="check1">1</label><input type="checkbox" id="check1"></span>
-                              <span><label for="check2">2</label><input type="checkbox" id="check2"></span>
-                              <span><label for="check3">3</label><input type="checkbox" id="check3"></span>
-                              <span><label for="check4">4</label><input type="checkbox" id="check4"></span>
+                              <span><label for="check1">По всем</label><input type="checkbox" id="check1"></span>
+                              <span><label for="check2">Школы, гимназии</label><input type="checkbox" id="check2"></span>
+                              <span><label for="check3">Среднее-специальное учебное заведение</label><input type="checkbox" id="check3"></span>
+                              <span><label for="check4">Высшее-специальное</label><input type="checkbox" id="check4"></span>
                             </div>
                           </div>
                         </div>
