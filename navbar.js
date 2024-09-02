@@ -522,8 +522,9 @@ class Navbar extends HTMLElement {
                 }
 		            .content_header_section{
                   display: grid;
-                  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr) );
                   font-size: 18px;
+                  white-space: nowrap; 
             	  }
 		            .date-picker-container{
                   position: relative;
@@ -600,15 +601,27 @@ class Navbar extends HTMLElement {
                   display:none;
                 }
 		            .in-total{
-                  color:#9C9C9C;
+                  color:red;
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  widht: 100%;
                   background:#fff;
                   border:1px solid #9C9C9C;
                   cursor:pointer;
+                  grid-column: span 5;
+                  height: 50px;
+                  svg {
+                    fill: red;
+                  }
               	}
+                
+                .in-total:hover {
+                  background-color: #d11521;
+                  color: #fff;
+                  svg {
+                    fill:  #fff;
+                  }
+                }
               	.in-total >span{
                   color:#4fa95d;
               	}
@@ -621,6 +634,21 @@ class Navbar extends HTMLElement {
                   border:1px solid #9C9C9C;
                   cursor:pointer;
               	}
+
+                @media (width <= 1400px) {
+                  .in-total, .export {
+                    grid-column: span 2;
+                  }
+                  .select {
+                    width: 50% !important;
+                  }
+                }
+                @media (width <= 1145px) {
+                  .in-total, .import_export {
+                    grid-column: span 1;
+                  }
+                }
+
 		            .main_content_select{
                   display:flex;
                 }
@@ -629,7 +657,7 @@ class Navbar extends HTMLElement {
                   display: flex;
                   flex-direction:column;
                   gap:10px;
-                  width: 33.3%;
+                  width: 40%;
                 }
 		            .select_1, .select_2{
                   position: relative;
@@ -771,6 +799,15 @@ class Navbar extends HTMLElement {
                 .popup p {
                   height: 30px;
                   color: #000000;
+                }
+                .two-popup {
+                  display: flex;
+                  flex-direction: column;
+                  display: none;
+                }
+
+                .active {
+                  display: block;
                 }
 
                 .hidden {
@@ -1162,14 +1199,14 @@ class Navbar extends HTMLElement {
             <div class="date-picker-container element" 
                 onclick="toggleDatePickerStart()">
                 <div class="date-picker-text" data-value="введите дату начала поиска">
-                    DATA OT
-                    <span class="date-picker-start">10.09.2024</span>
+                    ДАТА OT
+                    <span class="date-picker-start">10 СЕНТЯБРЯ 2024</span>
                 </div>
             </div>
             <div class="date-picker-container element">
                 <div class="date-picker-text" data-value="введите дату конца поиска">
-                    DATA ДО
-                    <span class="date-picker-end">20.09.2024</span>
+                    ДАТА ДО
+                    <span class="date-picker-end">20 СЕНТЯБРЯ 2024</span>
                 </div>
 
             </div>
@@ -1177,16 +1214,18 @@ class Navbar extends HTMLElement {
                 + ADD A NEW ONE
             </div>
             
-            <div class="import_export element" data-value="экспортировать" onclick="openImportPopap()">
+            <div class="import_export element" data-value="импортировать" onclick="openImportPopap()">
                 <img src='./assets/icons/fixed_icons/Group36_1 .svg'  />
                 IMPORT
             </div>
-            <div class="import_export element" data-value="импортировать" onclick="openExportPopap()">
+            <div class="import_export export element" data-value="экспортировать" onclick="openExportPopap()">
                 <img src='./assets/icons/fixed_icons/Group36.svg' />
                 EXPORT
             </div>
             <div class="in-total element" data-value="удалить вакансию">
-                <img src='./assets/icons/fixed_icons/Decelect.svg' />
+                <svg width="25" height="26" viewBox="0 0 50 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M2.57812 24C2.57812 11.8494 12.4276 2 24.5782 2C36.7288 2 46.5782 11.8494 46.5782 24C46.5782 36.1506 36.7288 46 24.5782 46C12.4276 46 2.57812 36.1506 2.57812 24ZM24.5782 6C14.6367 6 6.57812 14.0586 6.57812 24C6.57812 33.9414 14.6367 42 24.5782 42C34.5196 42 42.5782 33.9414 42.5782 24C42.5782 14.0586 34.5196 6 24.5782 6ZM17.5077 16.93C18.2886 16.1489 19.5549 16.1486 20.3361 16.9295L24.5799 21.1718L28.822 16.9298C29.603 16.1487 30.8694 16.1487 31.6504 16.9298C32.4315 17.7108 32.4315 18.9772 31.6504 19.7582L27.4086 24L31.6504 28.2418C32.4315 29.0228 32.4315 30.2892 31.6504 31.0702C30.8694 31.8513 29.603 31.8513 28.822 31.0702L24.5799 26.8282L20.3361 31.0705C19.5549 31.8514 18.2886 31.8511 17.5077 31.07C16.7267 30.2888 16.727 29.0224 17.5082 28.2415L21.7513 24L17.5082 19.7585C16.727 18.9776 16.7267 17.7112 17.5077 16.93Z"/>
+                </svg>
                 DESELECT
             </div>
         </div>
@@ -1199,7 +1238,7 @@ class Navbar extends HTMLElement {
                               <span class="two-placeholder">Тип учебного заведения</span>
                             </div>
                             <div class="two-arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
-                            <div class="popup2">
+                            <div class="two-popup">
                               <span><label for="check1">По всем</label><input type="checkbox" id="check1"></span>
                               <span><label for="check2">Школы, гимназии</label><input type="checkbox" id="check2"></span>
                               <span><label for="check3">Среднее-специальное учебное заведение</label><input type="checkbox" id="check3"></span>

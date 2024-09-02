@@ -140,7 +140,18 @@ function toggleDivVisibility() {
 toggleDivVisibility();
 selectedItem.addEventListener('input', toggleDivVisibility);
 
+document.addEventListener('click', function(event) {
+    const select2 = document.querySelector('.select_2');
+    const two = document.querySelector('.two');
+    const twoPopup = document.querySelector('.two-popup');
 
+    if (event.target === two) {
+        twoPopup.classList.toggle('visible');
+        event.stopPropagation();
+    } else if (!select2.contains(event.target)) {
+        twoPopup.classList.remove('visible');
+    }
+});
 
 
 
@@ -150,9 +161,11 @@ selectedItem.addEventListener('input', toggleDivVisibility);
 
 const two = document.querySelector('.two');
 const arrow2 = document.querySelector('.two-arrow');
+const popup2 = document.querySelector('two-popup');
 
 
 two.addEventListener('click', function(event) {
     arrow2.classList.toggle('rotated');
+    popup2.classList.toggle('active');
     event.stopPropagation(); // Останавливает всплытие события
 });
