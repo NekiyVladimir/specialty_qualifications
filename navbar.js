@@ -603,6 +603,7 @@ class Navbar extends HTMLElement {
 		            .in-total{
                   color:red;
                   display: flex;
+
                   align-items: center;
                   justify-content: center;
                   background:#fff;
@@ -612,6 +613,7 @@ class Navbar extends HTMLElement {
                   height: 50px;
                   svg {
                     fill: red;
+                    padding-right: 2px;
                   }
               	}
                 
@@ -686,9 +688,9 @@ class Navbar extends HTMLElement {
                 .select_page button{
                   width:60px;
                   height:40px;
-                  border: 2px solid #00B0D9;
+                  border: 2px solid #ccc;
                   background: none;
-                  color:#00B0D9;
+                  color:#ccc;
                 }
             
                 .dropdown-select {
@@ -716,7 +718,11 @@ class Navbar extends HTMLElement {
                   outline: none;
                   cursor: pointer;
                 }
-              
+
+                .dropdown-select_2:not(.active2):hover {
+                  border: 1px solid #7D7D7D;
+                }
+
                 .dropdown-container::after {
                   position: absolute;
                   right: 30px;
@@ -774,6 +780,25 @@ class Navbar extends HTMLElement {
 		            .one-placeholder, .two-placeholder {
                   font-size: 18px;
                 }
+                .two-placeholder {
+                  width: 220px;
+                  position: absolute;
+                  top: 15px;
+                }
+                .two-placeholder-resalt {
+                  font-size: 18px;
+                  color: #000000;
+                  padding: 12px;
+                  padding-right: 40px;
+                  box-sizing: border-box;
+                  -moz-appearance: none;
+                  appearance: none;
+                  outline: none;
+                  cursor: pointer;
+                  position: absolute;
+                  top: 4px;
+                  left: 1px;
+                }
 
                 .one, .two {
                   height: 54px;
@@ -794,6 +819,7 @@ class Navbar extends HTMLElement {
                   padding: 10px;
                   background-color: #f9f9f9;
                   position: absolute;
+                  width: 96.3%;
                   left: 0;
                 }
                 .popup p {
@@ -803,11 +829,74 @@ class Navbar extends HTMLElement {
                 .two-popup {
                   display: flex;
                   flex-direction: column;
+                  border: 1px solid #ccc;
+                  padding: 10px;
+                  background-color: #f9f9f9;
+                  width: 96.3%;
+                  position: absolute;
                   display: none;
+                }
+                .two-popup span {
+                  display: flex;
+                  align-items: center;
+                  padding-top: 10px;
+                  padding-bottom: 10px;
+                  font-size: 18px;
+                }
+                
+                .two-input {
+                  margin-left: auto;
+                }
+                input[type='checkbox'] {
+                  appearance: none;
+                  position: relative;
+                  height: 20px;
+                  min-width: 20px;
+                  border-radius: 1px;
+                  text-overflow: ellipsis;
+                  border: 2px solid #ccc;
+                  border-radius: 5px;
+                  overflow: visible;
+                }
+                input[type='checkbox']:checked::before {
+                  content: '';
+                  background-image: url('../assets/icons/fixed_icons/select.png');
+                  width: 29px;
+                  background-size: cover;
+                  height: 29px;
+                  position: absolute;
+                  left: -5px;
+                  top: -8px;
+                }
+                .btn-education {
+                  background: rgb(0, 176, 217);
+                  width: 100%;
+                  height: 42px;
+                  color: #fff;
+                  font-size: 20px;
+                  font-weight: 600;
+                  line-height: 148.02%;
+                  outline: none;
+                  border: none;
+                  cursor: pointer;
+                }
+                .btn-education:hover {
+                  color: var(--yellow);
                 }
 
                 .active {
                   display: block;
+                }
+                
+                .active2 {
+                  padding-top: 0px;
+                  padding-left: 7px;
+                  .two-placeholder {
+                    font-size: 14px;
+                    top: 5px; 
+                  }
+                  border: 2px solid var(--blue);
+                  z-index: 1;
                 }
 
                 .hidden {
@@ -842,7 +931,23 @@ class Navbar extends HTMLElement {
                   svg {
                     fill: #C3C3C3;
                   }
-                } 
+                }
+                .two-clear-selection {
+                  display: block;
+                  cursor: pointer;
+                  width: 21px;
+                  height: 21px;
+                  position: absolute;
+                  right: 10px;
+                  top: 10px;
+                  svg {
+                    fill: #C3C3C3;
+                  }
+                }
+                
+                .two-clear-selection:hover svg {
+                  fill: black;
+                }
 
                 .clear-selection:hover svg {
                   fill: black;
@@ -1234,15 +1339,27 @@ class Navbar extends HTMLElement {
                         <div class="select">
                           <p>Тип учебного заведения</p>
                           <div class="select_2">
+
+
+
+
+
                             <div class="dropdown-select_2 two">
                               <span class="two-placeholder">Тип учебного заведения</span>
+                              <span class="two-placeholder-resalt"></span>
+                            </div>
+                            <div class="two-clear-selection">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12,2 C17.5229861,2 22,6.47701386 22,12 C22,17.5229861 17.5229861,22 12,22 C6.47701386,22 2,17.5229861 2,12 C2,6.47701386 6.47701386,2 12,2 Z M13.4142136,12 L16.2426407,9.17157288 C16.633165,8.78104858 16.633165,8.1478836 16.2426407,7.75735931 C15.8521164,7.36683502 15.2189514,7.36683502 14.8284271,7.75735931 L12,10.5857864 L9.17157288,7.75735931 C8.78104858,7.36683502 8.1478836,7.36683502 7.75735931,7.75735931 C7.36683502,8.1478836 7.36683502,8.78104858 7.75735931,9.17157288 L10.5857864,12 L7.75735931,14.8284271 C7.36683502,15.2189514 7.36683502,15.8521164 7.75735931,16.2426407 C8.1478836,16.633165 8.78104858,16.633165 9.17157288,16.2426407 L12,13.4142136 L14.8284271,16.2426407 C15.2189514,16.633165 15.8521164,16.633165 16.2426407,16.2426407 C16.633165,15.8521164 16.633165,15.2189514 16.2426407,14.8284271 L13.4142136,12 Z"/>
+                              </svg>
                             </div>
                             <div class="two-arrow"><img src="./assets/icons/arrow.svg" alt=""></div>
                             <div class="two-popup">
-                              <span><label for="check1">По всем</label><input type="checkbox" id="check1"></span>
-                              <span><label for="check2">Школы, гимназии</label><input type="checkbox" id="check2"></span>
-                              <span><label for="check3">Среднее-специальное учебное заведение</label><input type="checkbox" id="check3"></span>
-                              <span><label for="check4">Высшее-специальное</label><input type="checkbox" id="check4"></span>
+                              <span><label for="check1">По всем</label><input class="two-input" type="checkbox" id="check1"></span>
+                              <span><label for="check2">Школы, гимназии</label><input class="two-input" type="checkbox" id="check2"></span>
+                              <span><label for="check3">Среднее-специальное учебное заведение</label><input class="two-input" type="checkbox" id="check3"></span>
+                              <span><label for="check4">Высшее-специальное</label><input class="two-input" type="checkbox" id="check4"></span>
+                              <button class="btn-education">Выбрать</button>
                             </div>
                           </div>
                         </div>

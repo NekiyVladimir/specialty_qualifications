@@ -143,29 +143,156 @@ selectedItem.addEventListener('input', toggleDivVisibility);
 document.addEventListener('click', function(event) {
     const select2 = document.querySelector('.select_2');
     const two = document.querySelector('.two');
+    const arrow2 = document.querySelector('.two-arrow');
     const twoPopup = document.querySelector('.two-popup');
+    const dropdown2 = document.querySelector('.dropdown-select_2')
+
+    if (event.target === twoPopup) {
+        event.stopPropagation();
+    }
 
     if (event.target === two) {
         twoPopup.classList.toggle('visible');
+        arrow2.classList.toggle('rotated');
+        dropdown2.classList.toggle('active2');
         event.stopPropagation();
-    } else if (!select2.contains(event.target)) {
+    } else if (!select2.contains(event.target)){
         twoPopup.classList.remove('visible');
+        arrow2.classList.remove('rotated');
+        dropdown2.classList.remove('active2');
     }
+    
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.two-input');
+    const placeholderResalt = document.querySelector('.two-placeholder-resalt');
+    const twoPlaceholder = document.querySelector('.two-placeholder');
+    const button = document.querySelector('.btn-education');
+    const twoPopup = document.querySelector('.two-popup');
+    const arrow2 = document.querySelector('.two-arrow');
+    const twoClear = document.querySelector('.two-clear-selection');
+    const dropdown2 = document.querySelector('.dropdown-select_2');
 
+    twoClear.style.display = 'none';
+    placeholderResalt.style.display = 'none';
+    twoPlaceholder.style.display = 'display';
+  
+    button.addEventListener('click', function() {
+        twoPopup.classList.remove('visible');
+        arrow2.classList.remove('rotated');
+        dropdown2.classList.remove('active2');
 
+        let checkedCount = 0;
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkedCount++;
+            }
+        });
+  
+        if (checkedCount > 0) {
+            placeholderResalt.textContent = `Тип учебного заведения (выбрано: ${checkedCount})`;
+            placeholderResalt.style.display = 'block';
+            twoClear.style.display = 'block';
+            twoPlaceholder.style.display = 'none';
+        } else {
+            placeholderResalt.textContent = '';
+            twoClear.style.display = 'none';
+            placeholderResalt.style.display = 'none';
+            twoPlaceholder.style.display = 'block';
+        };
+    });
 
+    twoClearSelection.addEventListener('click', function() {
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
+        });
+
+        placeholderResalt.textContent = '';
+        twoPlaceholder.style.display = 'block';
+        twoClear.style.display = 'none';
+        placeholderResalt.style.display = 'none';
+    });
+});
+
+const twoClearSelection = document.querySelector('.two-clear-selection');
+const placeholderResalt = document.querySelector('.two-placeholder-resalt');
+
+twoClearSelection.addEventListener('click', function() {
+    placeholderResalt.textContent = '';
+    twoPlaceholder.style.display = 'block';
+});
 
 
 
 const two = document.querySelector('.two');
 const arrow2 = document.querySelector('.two-arrow');
 const popup2 = document.querySelector('two-popup');
+const dropdown2 = document.querySelector('dropdown-select_2')
 
 
-two.addEventListener('click', function(event) {
-    arrow2.classList.toggle('rotated');
-    popup2.classList.toggle('active');
-    event.stopPropagation(); // Останавливает всплытие события
+//two.addEventListener('click', function(event) {
+//    arrow2.classList.toggle('rotated');
+//    popup2.classList.toggle('active');
+
+//    event.stopPropagation(); // Останавливает всплытие события
+//});
+
+
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const selectAllCheckbox = document.querySelector('input[id="check1"]');
+
+document.addEventListener('DOMContentLoaded', function() {
+  selectAllCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+      checkboxes.forEach(function(checkbox) {
+        if (checkbox !== selectAllCheckbox) {
+          checkbox.checked = true;
+        }
+      });
+    } else {
+      checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+      });
+    }
+  });
+
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      if (this !== selectAllCheckbox && this.checked) {
+        selectAllCheckbox.checked = false;
+      } else if (this === selectAllCheckbox && !this.checked) {
+        checkboxes.forEach(function(cb) {
+          cb.checked = false;
+        });
+      }
+    });
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
