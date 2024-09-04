@@ -748,7 +748,7 @@ class Navbar extends HTMLElement {
                 .dropdown-arrow {
                   position: absolute;
                   right: 50px;
-                  top: 13px;
+                  top: 17px;
                   height: 18px;
                   width: 18px;
                   /*transform: translateY(-50%);*/
@@ -762,7 +762,7 @@ class Navbar extends HTMLElement {
                 .two-arrow {
                   position: absolute;
                   right: 50px;
-                  top: 13px;
+                  top: 17px;
                   height: 18px;
                   width: 18px;
                   transform: rotate(0deg);
@@ -778,6 +778,8 @@ class Navbar extends HTMLElement {
                   transform: rotate(180deg);
                 }
 		            .one-placeholder, .two-placeholder {
+                  position: absolute;
+                  top: 15px;
                   font-size: 18px;
                 }
                 .two-placeholder {
@@ -816,16 +818,22 @@ class Navbar extends HTMLElement {
                 .popup {
                   display: none;
                   border: 1px solid #ccc;
-                  padding: 10px;
+                  padding: 5px 10px 10px 10px;
                   background-color: #f9f9f9;
                   position: absolute;
                   width: 96.3%;
                   left: 0;
                 }
+                .popup-placeholder {
+                  font-size: 14px !important;
+                  color: #7D7D7D !important;
+                  pointer-events: none;
+                }
                 .popup p {
                   height: 30px;
                   color: #000000;
                 }
+  
                 .two-popup {
                   display: flex;
                   flex-direction: column;
@@ -911,6 +919,9 @@ class Navbar extends HTMLElement {
                 .selected-item {
                   display: block;
                   color: #000000;
+                  position: absolute;
+                  top: 18px;
+                  font-size: 18px;
                 }
 
                 .icon {
@@ -927,7 +938,7 @@ class Navbar extends HTMLElement {
                   height: 21px;
                   position: absolute;
                   right: 10px;
-                  top: 10px;
+                  top: 16px;
                   svg {
                     fill: #C3C3C3;
                   }
@@ -939,7 +950,7 @@ class Navbar extends HTMLElement {
                   height: 21px;
                   position: absolute;
                   right: 10px;
-                  top: 10px;
+                  top: 16px;
                   svg {
                     fill: #C3C3C3;
                   }
@@ -958,12 +969,15 @@ class Navbar extends HTMLElement {
                   padding-left: 7px;
                   .one-placeholder {
                     font-size: 10px;
+                    top: 5px;
                   } 
                 }
 
                 .one-text_is-active {
                   height: 26px;
                   font-size: 18px;
+                  position: absolute;
+                  top: 16px;
                 }
 		            .main_content_pagination{
                   display:flex;
@@ -1381,6 +1395,7 @@ class Navbar extends HTMLElement {
   <path fill-rule="evenodd" d="M12,2 C17.5229861,2 22,6.47701386 22,12 C22,17.5229861 17.5229861,22 12,22 C6.47701386,22 2,17.5229861 2,12 C2,6.47701386 6.47701386,2 12,2 Z M13.4142136,12 L16.2426407,9.17157288 C16.633165,8.78104858 16.633165,8.1478836 16.2426407,7.75735931 C15.8521164,7.36683502 15.2189514,7.36683502 14.8284271,7.75735931 L12,10.5857864 L9.17157288,7.75735931 C8.78104858,7.36683502 8.1478836,7.36683502 7.75735931,7.75735931 C7.36683502,8.1478836 7.36683502,8.78104858 7.75735931,9.17157288 L10.5857864,12 L7.75735931,14.8284271 C7.36683502,15.2189514 7.36683502,15.8521164 7.75735931,16.2426407 C8.1478836,16.633165 8.78104858,16.633165 9.17157288,16.2426407 L12,13.4142136 L14.8284271,16.2426407 C15.2189514,16.633165 15.8521164,16.633165 16.2426407,16.2426407 C16.633165,15.8521164 16.633165,15.2189514 16.2426407,14.8284271 L13.4142136,12 Z"/>
 </svg></div>
                             <div class="popup hidden">
+                              <p class="popup-placeholder">Выберите регион или продолжите ввод</p>
                               <p class="popup-item">Нижний Новгород</p>
                               <p class="popup-item">Арзамас</p>
                               <p class="popup-item">Балахна</p>
@@ -1633,7 +1648,190 @@ class Navbar extends HTMLElement {
                           </div>-->
                         </div>
                       </div>
-                      <div class="main_content_pagination">
+
+
+
+
+                      <pagination-control>
+                <div class="pagination">
+                    <div class="pagination__specify-page">
+                        <p class="pagination__specify-page-text">Укажите страницу</p>
+                        <input type="text">
+                        <div class="pagination__go-button inactive"><span style="line-height: 1px; height: 3px;">Go</span></div>
+                    </div>
+                    <div class="pagination__pages-control" style="flex: 0 1 0%;">
+                        <div class="pagination__page-number page-control-element">
+                            <span class="icon"></span>
+                        </div>
+                        <div class="pagination__page-number page-control-element">
+                            <p style="line-height: 1px; height: 3px;">First</p>
+                        </div>
+                        <!--<div class="pagination__page-number page-control-element">
+                            <p>Last</p>
+                        </div>-->
+                        <div class="pagination__page-number" index="1">1</div><div class="pagination__page-number page-control-element">
+                            <span class="icon"></span>
+                        </div>
+                    </div>
+                </div>
+            
+            <style>
+                @media (width <= 750px) {
+                    pagination-control {
+                        display: none;
+                    }
+                }
+                @media (width <= 880px) {
+                    div.pagination {
+                        display: flex;
+                        margin-top: 20px;
+                    }
+                    .pagination__page-number {
+                        width: 50px;
+                        height: 50px;
+                    }
+                    .control-panel {
+                        width: 100%;
+                    }
+                    div.pagination__specify-page {
+                        display: none;
+                    }
+                    .pagination__specify-page > input {
+                        width: 50px;
+                        height: 45px;
+                    }
+                    .pagination__pages-control {
+                        width: 100%;
+                        justify-content: center;
+                        gap: 10px;
+                    }
+                    .pagination__specify-page-text {
+                        display: none;
+                    }
+                    .pagination__go-button {
+                        width: 50px;
+                        height: 45px;
+                    }
+                }
+                pagination-control {
+                    width: 100%;
+                }
+                .pagination__specify-page > input {
+                    box-sizing: border-box;
+                    width: 76px;
+                    height: 100%;
+                    outline: none;
+                    border: 2px solid lightgray;
+                    font-size: 15px;
+                    padding: 10px;
+                    color: #414141;
+                }
+                .pagination__pages-control {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                }
+                .pagination {
+                    width: 100%;
+                    margin-top: 70px;
+                    height: 50px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+
+                .pagination__specify-page {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+                }
+                .pagination__page-number {
+                    box-sizing: border-box;
+                    width: 50px;
+                    height: 50px;
+                    box-sizing: border-box;
+                    border: 2px solid var(--blue);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: 0.5s;
+                }
+                .pagination__page-number.active {
+                    background-color: var(--blue);
+                    color: var(--yellow);
+                }
+                .pagination__page-number > * {
+                    cursor: pointer;
+                }
+                .pagination__page-number.inactive {
+                    border: 2px solid lightgray;
+                    color: lightgray;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive > span.icon {
+                    color: lightgray;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive:hover {
+                    color: lightgray;
+                    border: 2px solid lightgray;
+                    background: none;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive:hover > span.icon {
+                    color: lightgray;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive:hover > p {
+                    cursor: default;
+                }
+                .page-control-element > p {
+                    display: inline;
+                    vertical-align: middle;
+                }
+                .page-control-element > span.icon {
+                    cursor: pointer;
+                    color: var(--blue);
+                    transition: 0.5s;
+                }
+                .page-control-element:hover > span.icon {
+                    transition: 0.5s;
+                    color: white;
+                }
+                .pagination__page-number:hover {
+                    background-color: var(--blue);
+                    color: white;
+                    transition: 0.5s;
+                }
+                .pagination__go-button {
+                    box-sizing: border-box;
+                    border: 2px solid var(--blue);
+                    color: var(--blue);
+                    width: 76px;
+                    height: 50px;
+                    font-size: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    vertical-aling: middle;
+                }
+                .pagination__go-button.inactive {
+                    border-color: lightgray;
+                    color: lightgray;
+                    cursor: default;
+                }
+            </style>
+        </pagination-control>
+
+
+
+
+
+                      <!--<div class="main_content_pagination">
                         <div class="select_page">
                           <p>Укажите страницу</p>
                           <input type="text">
@@ -1641,7 +1839,14 @@ class Navbar extends HTMLElement {
                         </div>
                         <div class="number_of_pagination" id="pag">
                         </div>
-                      </div>
+                      </div>-->
+
+
+
+
+
+
+
                       <div class="mobile_tabel">
                           <h3>Журнал квалификаций</h3>
                           <div class="cvalication" >
@@ -1885,7 +2090,191 @@ class Navbar extends HTMLElement {
                             </tbody>
                       </table>
                       </div>
-                      <div class="main_content_pagination">
+                      
+
+
+
+
+
+                      <pagination-control>
+                <div class="pagination">
+                    <div class="pagination__specify-page">
+                        <p class="pagination__specify-page-text">Укажите страницу</p>
+                        <input type="text">
+                        <div class="pagination__go-button inactive"><span style="line-height: 1px; height: 3px;">Go</span></div>
+                    </div>
+                    <div class="pagination__pages-control" style="flex: 0 1 0%;">
+                        <div class="pagination__page-number page-control-element">
+                            <span class="icon"></span>
+                        </div>
+                        <div class="pagination__page-number page-control-element">
+                            <p style="line-height: 1px; height: 3px;">First</p>
+                        </div>
+                        <!--<div class="pagination__page-number page-control-element">
+                            <p>Last</p>
+                        </div>-->
+                        <div class="pagination__page-number" index="1">1</div><div class="pagination__page-number page-control-element">
+                            <span class="icon"></span>
+                        </div>
+                    </div>
+                </div>
+            
+            <style>
+                @media (width <= 750px) {
+                    pagination-control {
+                        display: none;
+                    }
+                }
+                @media (width <= 880px) {
+                    div.pagination {
+                        display: flex;
+                        margin-top: 20px;
+                    }
+                    .pagination__page-number {
+                        width: 50px;
+                        height: 50px;
+                    }
+                    .control-panel {
+                        width: 100%;
+                    }
+                    div.pagination__specify-page {
+                        display: none;
+                    }
+                    .pagination__specify-page > input {
+                        width: 50px;
+                        height: 45px;
+                    }
+                    .pagination__pages-control {
+                        width: 100%;
+                        justify-content: center;
+                        gap: 10px;
+                    }
+                    .pagination__specify-page-text {
+                        display: none;
+                    }
+                    .pagination__go-button {
+                        width: 50px;
+                        height: 45px;
+                    }
+                }
+                pagination-control {
+                    width: 100%;
+                }
+                .pagination__specify-page > input {
+                    box-sizing: border-box;
+                    width: 76px;
+                    height: 100%;
+                    outline: none;
+                    border: 2px solid lightgray;
+                    font-size: 15px;
+                    padding: 10px;
+                    color: #414141;
+                }
+                .pagination__pages-control {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                }
+                .pagination {
+                    width: 100%;
+                    margin-top: 30px;
+                    height: 50px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+
+                .pagination__specify-page {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+                }
+                .pagination__page-number {
+                    box-sizing: border-box;
+                    width: 50px;
+                    height: 50px;
+                    box-sizing: border-box;
+                    border: 2px solid var(--blue);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: 0.5s;
+                }
+                .pagination__page-number.active {
+                    background-color: var(--blue);
+                    color: var(--yellow);
+                }
+                .pagination__page-number > * {
+                    cursor: pointer;
+                }
+                .pagination__page-number.inactive {
+                    border: 2px solid lightgray;
+                    color: lightgray;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive > span.icon {
+                    color: lightgray;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive:hover {
+                    color: lightgray;
+                    border: 2px solid lightgray;
+                    background: none;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive:hover > span.icon {
+                    color: lightgray;
+                    cursor: default;
+                }
+                .pagination__page-number.inactive:hover > p {
+                    cursor: default;
+                }
+                .page-control-element > p {
+                    display: inline;
+                    vertical-align: middle;
+                }
+                .page-control-element > span.icon {
+                    cursor: pointer;
+                    color: var(--blue);
+                    transition: 0.5s;
+                }
+                .page-control-element:hover > span.icon {
+                    transition: 0.5s;
+                    color: white;
+                }
+                .pagination__page-number:hover {
+                    background-color: var(--blue);
+                    color: white;
+                    transition: 0.5s;
+                }
+                .pagination__go-button {
+                    box-sizing: border-box;
+                    border: 2px solid var(--blue);
+                    color: var(--blue);
+                    width: 76px;
+                    height: 50px;
+                    font-size: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    vertical-aling: middle;
+                }
+                .pagination__go-button.inactive {
+                    border-color: lightgray;
+                    color: lightgray;
+                    cursor: default;
+                }
+            </style>
+        </pagination-control>
+                      
+                      
+                      
+                      
+                      <!--<div class="main_content_pagination">
                         <div class="select_page">
                           <p>Укажите страницу</p>
                           <input type="text">
@@ -1893,7 +2282,7 @@ class Navbar extends HTMLElement {
                         </div>
                         <div class="number_of_pagination" id="pag">
                         </div>
-                      </div>
+                      </div>-->
                 </div>
             </div>
 

@@ -11,9 +11,9 @@ const icon = document.querySelector('.dropdown-arrow');
 const dropdown = document.querySelector('.one-text');
 
 element.addEventListener('click', function(event) {
-    this.classList.toggle('is-active');
     if (selectedItem.textContent.trim() === '') {
         searchArea.classList.toggle('one-text_is-active');
+        this.classList.toggle('is-active');
     }
     icon.classList.toggle('rotated');
     event.stopPropagation(); // Останавливает всплытие события
@@ -33,7 +33,7 @@ document.addEventListener('click', function() {
 
 dropdown.addEventListener('click', function(event) {
     //this.classList.toggle('is-active');
-    if (selectedItem.textContent.trim() !== '') {
+    if (selectedItem.textContent.trim() === '') {
         this.classList.remove('is-active');
     }
     event.stopPropagation(); // Останавливает всплытие события
@@ -54,7 +54,7 @@ element.addEventListener('click', function(event) {
     if (!isOpen) {
         // Показываем только первые 10 элементов
         for (let i = 0; i < elements.length; i++) {
-            if (i < 10) {
+            if (i < 11) {
                 elements[i].style.display = 'block';
             } else {
                 elements[i].style.display = 'none';
@@ -73,10 +73,6 @@ element.addEventListener('click', function(event) {
     event.stopPropagation();
 });
 
-//element.addEventListener('click', function(event) {
-//    popup.classList.toggle('visible');
-//    event.stopPropagation();
-//});
 
 document.addEventListener('click', function() {
     popup.classList.remove('visible');
