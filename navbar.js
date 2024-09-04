@@ -706,6 +706,10 @@ class Navbar extends HTMLElement {
                   cursor:pointer;
                 }
 
+                .dropdown-select:not(.is-active):hover {
+                  border: 1px solid #7D7D7D;
+                }
+
                 .dropdown-select_2 {
                   width: 100%;
                   padding: 12px;
@@ -816,13 +820,17 @@ class Navbar extends HTMLElement {
                 }
                 
                 .popup {
-                  display: none;
-                  border: 1px solid #ccc;
-                  padding: 5px 10px 10px 10px;
+                  //display: none;
+                  //border: 1px solid #ccc;
                   background-color: #f9f9f9;
                   position: absolute;
-                  width: 96.3%;
+                  text-indent: 20px;
+                  width: 100%;
                   left: 0;
+                  cursor: pointer;
+                  max-height: 0;
+                  overflow: hidden;
+                  transition: max-height 0.2s ease;
                 }
                 .popup-placeholder {
                   font-size: 14px !important;
@@ -832,28 +840,41 @@ class Navbar extends HTMLElement {
                 .popup p {
                   height: 30px;
                   color: #000000;
+                  padding: 5px 0 0 0;
+                }
+                .popup p:hover {
+                  background-color: #f0f0f0;
                 }
   
                 .two-popup {
                   display: flex;
                   flex-direction: column;
-                  border: 1px solid #ccc;
-                  padding: 10px;
+                  //border: 1px solid #ccc;
                   background-color: #f9f9f9;
                   width: 96.3%;
                   position: absolute;
-                  display: none;
+                  cursor: pointer;
+                  //display: none;
+                  max-height: 0;
+                  overflow: hidden;
+                  transition: max-height 0.2s ease;
                 }
                 .two-popup span {
                   display: flex;
                   align-items: center;
+                  text-indent: 20px;
                   padding-top: 10px;
                   padding-bottom: 10px;
                   font-size: 18px;
                 }
                 
+                .two-popup span:hover {
+                  background-color: #f0f0f0;
+                }
+
                 .two-input {
                   margin-left: auto;
+                  margin-right: 15px;
                 }
                 input[type='checkbox'] {
                   appearance: none;
@@ -877,8 +898,9 @@ class Navbar extends HTMLElement {
                   top: -8px;
                 }
                 .btn-education {
+                  margin: 14px 17px 17px 17px;
                   background: rgb(0, 176, 217);
-                  width: 100%;
+                  width: 96%;
                   height: 42px;
                   color: #fff;
                   font-size: 20px;
@@ -908,12 +930,14 @@ class Navbar extends HTMLElement {
                 }
 
                 .hidden {
-                  display: none;
+                  //display: none;
                 }
 
                 .visible {
                   display: block;
                   z-index: 1;
+                  max-height: 250px;
+                  border: 1px solid #ccc;
                 }
                 
                 .selected-item {
@@ -967,6 +991,7 @@ class Navbar extends HTMLElement {
                 .one.is-active {
                   padding-top: 0px;
                   padding-left: 7px;
+                  border: 2px solid var(--blue);
                   .one-placeholder {
                     font-size: 10px;
                     top: 5px;

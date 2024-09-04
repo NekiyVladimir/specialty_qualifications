@@ -223,8 +223,9 @@ twoClearSelection.addEventListener('click', function() {
 
 const two = document.querySelector('.two');
 const arrow2 = document.querySelector('.two-arrow');
-const popup2 = document.querySelector('two-popup');
-const dropdown2 = document.querySelector('dropdown-select_2')
+const popup2 = document.querySelector('.two-popup');
+const dropdown2 = document.querySelector('.dropdown-select_2')
+const twoPopup = document.querySelector('.two-popup');
 
 
 //two.addEventListener('click', function(event) {
@@ -269,14 +270,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// Set the initial width of Block 2 to match Block 1
+twoPopup.style.width = dropdown2.offsetWidth + 'px';
 
-
-
-
-
-
-
-
+// Update the width of Block 2 when the window is resized
+window.addEventListener('resize', function() {
+    twoPopup.style.width = dropdown2.offsetWidth + 'px';
+});
 
 
 
